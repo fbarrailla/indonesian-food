@@ -717,6 +717,67 @@
   @container (max-width: 36rem) {
     .recipe-side { padding: 1.25rem; }
   }
+
+  /* -------------------------------------------------------- figures */
+  .recipe-figure {
+    margin: 0 0 clamp(2rem, 4vw, 3rem);
+    position: relative;
+  }
+  .recipe-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--paper-2);
+    filter: saturate(0.92) contrast(1.04);
+  }
+  .recipe-figure figcaption {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9em;
+    align-items: baseline;
+    margin-top: 0.65em;
+    padding-top: 0.55em;
+    border-top: 1px solid var(--rule);
+    font-size: var(--fs-xs);
+    color: var(--ink-2);
+  }
+  .recipe-figure .cap-num {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30, "wght" 500;
+    font-variant: all-small-caps;
+    letter-spacing: 0.22em;
+    color: var(--sambal);
+    white-space: nowrap;
+  }
+  .recipe-figure .cap-text {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 60, "wght" 380;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .recipe-figure .cap-text em {
+    font-style: italic;
+    color: var(--ink-mute);
+    font-variation-settings: "opsz" 14, "SOFT" 30, "wght" 380;
+    letter-spacing: 0.02em;
+  }
+
+  /* credits in colophon */
+  .credits {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 1;
+    column-gap: 2rem;
+    font-size: var(--fs-xs);
+    line-height: 1.55;
+    color: var(--ink-mute);
+  }
+  @media (min-width: 48rem) { .credits { columns: 2; } }
+  .credits li { break-inside: avoid; padding: 0.18em 0; }
+  .credits b { color: var(--ink-2); font-weight: 500; font-family: var(--font-display); font-variation-settings: "opsz" 24, "SOFT" 30, "wght" 500; }
+  .credits a { color: inherit; text-decoration-color: var(--rule); }
 </style>
 </head>
 <body>
@@ -830,6 +891,14 @@
 
 <!-- ============================ № 001 ============================ -->
 <article class="recipe" id="r01">
+  <figure class="recipe-figure reveal">
+    <img src="img/r01.jpg" alt="A plate of nasi goreng kampung topped with a fried egg." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 001</span>
+      <span class="cap-text">Nasi goreng kampung, after midnight. <em>&mdash; Photograph by shankar s., CC BY 2.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>001</div>
     <div>
@@ -900,6 +969,14 @@
 
 <!-- ============================ № 002 ============================ -->
 <article class="recipe" id="r02">
+  <figure class="recipe-figure reveal">
+    <img src="img/r02.jpg" alt="A Padang-style plate set with rendang, sambal, and small bowls." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 002</span>
+      <span class="cap-text">A Padang spread &mdash; many bowls, one rice. <em>&mdash; Photograph by D.W. Fisher-Freberg, CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>002</div>
     <div>
@@ -967,6 +1044,14 @@
 
 <!-- ============================ № 003 ============================ -->
 <article class="recipe" id="r03">
+  <figure class="recipe-figure reveal">
+    <img src="img/r03.jpg" alt="A bowl of soto, golden with turmeric." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 003</span>
+      <span class="cap-text">Soto, the golden broth of Java. <em>&mdash; Photograph by Gunawan Kartapranata, CC BY-SA 3.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>003</div>
     <div>
@@ -1031,6 +1116,14 @@
 
 <!-- ============================ № 004 ============================ -->
 <article class="recipe" id="r04">
+  <figure class="recipe-figure reveal">
+    <img src="img/r04.jpg" alt="A platter of mendoan, soft half-fried tempeh." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 004</span>
+      <span class="cap-text">Mendoan, half-fried tempeh, still warm. <em>&mdash; Photograph by Hersy Ardianty A., CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>004</div>
     <div>
@@ -1093,6 +1186,14 @@
 
 <!-- ============================ № 005 ============================ -->
 <article class="recipe" id="r05">
+  <figure class="recipe-figure reveal">
+    <img src="img/r05.jpg" alt="Cracked-open durian fruit showing its golden flesh." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 005</span>
+      <span class="cap-text">The king of fruits, before its bath of ice and coconut. <em>&mdash; Photograph by shankar s., CC BY 2.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>005</div>
     <div>
@@ -1151,6 +1252,14 @@
 
 <!-- ============================ № 006 ============================ -->
 <article class="recipe" id="r06">
+  <figure class="recipe-figure reveal">
+    <img src="img/r06.jpg" alt="Skewers of grilled chicken satay with peanut sauce." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 006</span>
+      <span class="cap-text">Sate ayam, lacquered over charcoal. <em>&mdash; Photograph by Ardfeb, CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>006</div>
     <div>
@@ -1212,6 +1321,14 @@
 
 <!-- ============================ № 007 ============================ -->
 <article class="recipe" id="r07">
+  <figure class="recipe-figure reveal">
+    <img src="img/r07.jpg" alt="A bowl of bakso with meatballs, noodles and clear broth." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 007</span>
+      <span class="cap-text">Bakso, with noodles and a very clear broth. <em>&mdash; Photograph by christian r, CC BY-SA 2.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>007</div>
     <div>
@@ -1272,6 +1389,14 @@
 
 <!-- ============================ № 008 ============================ -->
 <article class="recipe" id="r08">
+  <figure class="recipe-figure reveal">
+    <img src="img/r08.jpg" alt="A bowl of chicken porridge with toppings." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 008</span>
+      <span class="cap-text">Bubur ayam, before the city wakes. <em>&mdash; Photograph by Sakurai Midori, CC BY 3.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>008</div>
     <div>
@@ -1334,6 +1459,14 @@
 
 <!-- ============================ № 009 ============================ -->
 <article class="recipe" id="r09">
+  <figure class="recipe-figure reveal">
+    <img src="img/r09.jpg" alt="Balinese minced fish satay wrapped on lemongrass stalks." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 009</span>
+      <span class="cap-text">Sate lilit, wound around lemongrass. <em>&mdash; Photograph by okezone.com, CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>009</div>
     <div>
@@ -1395,6 +1528,14 @@
 
 <!-- ============================ № 010 ============================ -->
 <article class="recipe" id="r10">
+  <figure class="recipe-figure reveal">
+    <img src="img/r10.jpg" alt="A plate of nasi pecel with rice, vegetables, and peanut sauce." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 010</span>
+      <span class="cap-text">Sego pecel &mdash; blanched greens, a peanut sauce. <em>&mdash; Photograph by Evan Ilham Pasha, CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>010</div>
     <div>
@@ -1453,6 +1594,14 @@
 
 <!-- ============================ № 011 ============================ -->
 <article class="recipe" id="r11">
+  <figure class="recipe-figure reveal">
+    <img src="img/r11.jpg" alt="A plate of ketoprak with tofu, vermicelli and peanut sauce." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 011</span>
+      <span class="cap-text">Ketoprak, the Jakarta cart in a single plate. <em>&mdash; Photograph by Bajinra, CC0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>011</div>
     <div>
@@ -1511,6 +1660,14 @@
 
 <!-- ============================ № 012 ============================ -->
 <article class="recipe" id="r12">
+  <figure class="recipe-figure reveal">
+    <img src="img/r12.jpg" alt="A plate of tahu telur, broken tofu omelette in peanut sauce." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 012</span>
+      <span class="cap-text">Tahu telur, broken on purpose, then sauced. <em>&mdash; Photograph by Gunarta, CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>012</div>
     <div>
@@ -1571,6 +1728,14 @@
 
 <!-- ============================ № 013 ============================ -->
 <article class="recipe" id="r13">
+  <figure class="recipe-figure reveal">
+    <img src="img/r13.jpg" alt="Tapioca balls (cilok) threaded on bamboo skewers." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 013</span>
+      <span class="cap-text">Cilok &mdash; steamed, threaded, sauced. <em>&mdash; Photograph by Wiwik P, CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>013</div>
     <div>
@@ -1632,6 +1797,14 @@
 
 <!-- ============================ № 014 ============================ -->
 <article class="recipe" id="r14">
+  <figure class="recipe-figure reveal">
+    <img src="img/r14.jpg" alt="A plate of beef rendang in deep, dark sauce." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 014</span>
+      <span class="cap-text">Rendang &mdash; the long, dark cook. <em>&mdash; Photograph by Midori, CC BY 3.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>014</div>
     <div>
@@ -1697,6 +1870,14 @@
 
 <!-- ============================ № 015 ============================ -->
 <article class="recipe" id="r15">
+  <figure class="recipe-figure reveal">
+    <img src="img/r15.jpg" alt="A bowl of seblak with rehydrated crackers, eggs and noodles." loading="lazy" width="1600" height="1000" />
+    <figcaption>
+      <span class="cap-num">№ 015</span>
+      <span class="cap-text">Seblak, controlled chaos. <em>&mdash; Photograph by Raflinoer32, CC BY-SA 4.0.</em></span>
+    </figcaption>
+  </figure>
+
   <header class="recipe-head reveal">
     <div class="recipe-num"><span class="hash">№</span>015</div>
     <div>
@@ -1772,18 +1953,37 @@
   <div>
     <h3>About the volume</h3>
     <p>
-      <span class="ital">Rasa Nusantara</span> is a one-off cookbook journal: fifteen Indonesian recipes set in serif, printed on warm paper, and bound here in a single document. It was set in Fraunces (display) and Newsreader (body), both variable typefaces by Phaedra Charles and Production Type respectively. No part of this volume requires a kitchen larger than the one you already have.
+      <span class="ital">Rasa Nusantara</span> is a one-off cookbook journal: fifteen Indonesian recipes set in serif, printed on warm paper, and bound here in a single document. Set in Fraunces (display) and Newsreader (body). No part of this volume requires a kitchen larger than the one you already have.
     </p>
-    <a href="#contents" class="return">Return to index</a>
-  </div>
-  <div>
-    <h3>Glossary</h3>
+    <h3 style="margin-top:1.4rem">Glossary</h3>
     <p><span class="ital">Kecap manis</span> — sweet thickened soy.<br/>
        <span class="ital">Terasi</span> — fermented shrimp paste.<br/>
        <span class="ital">Sambal</span> — chilli condiment, family of.<br/>
        <span class="ital">Lontong / ketupat</span> — pressed rice cakes.<br/>
        <span class="ital">Kerupuk</span> — fried crackers, prawn or otherwise.<br/>
        <span class="ital">Kencur</span> — aromatic ginger, sharp &amp; cool.</p>
+    <a href="#contents" class="return">Return to index</a>
+  </div>
+  <div>
+    <h3>Photographs</h3>
+    <p style="margin-bottom:0.9em">All photographs are reproduced under their Creative Commons licences from Wikimedia Commons. With thanks to —</p>
+    <ul class="credits">
+      <li><b>№ 001</b> &nbsp;shankar s. &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Nasi_Goreng_Kampung_(11967588375).jpg">CC&nbsp;BY&nbsp;2.0</a></li>
+      <li><b>№ 002</b> &nbsp;D.W. Fisher-Freberg &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Nasi_Padang_Pak_Nurdin.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+      <li><b>№ 003</b> &nbsp;Gunawan Kartapranata &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Soto_Ayam_Savoy_Homann_Hotel.JPG">CC&nbsp;BY-SA&nbsp;3.0</a></li>
+      <li><b>№ 004</b> &nbsp;Hersy Ardianty A. &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Mendoan.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+      <li><b>№ 005</b> &nbsp;shankar s. &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Mmmm-_durian!_(7904723210).jpg">CC&nbsp;BY&nbsp;2.0</a></li>
+      <li><b>№ 006</b> &nbsp;Ardfeb &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Sate_Ayam_Al-Huda_Jember.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+      <li><b>№ 007</b> &nbsp;christian r &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Bakso_mi_bihun.jpg">CC&nbsp;BY-SA&nbsp;2.0</a></li>
+      <li><b>№ 008</b> &nbsp;Sakurai Midori &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Bubur_ayam_chicken_porridge.JPG">CC&nbsp;BY&nbsp;3.0</a></li>
+      <li><b>№ 009</b> &nbsp;okezone.com &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Sate_lilit.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+      <li><b>№ 010</b> &nbsp;Evan Ilham Pasha &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Sego_Pecel.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+      <li><b>№ 011</b> &nbsp;Bajinra &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Bogor_Ketoprak_Indonesian_Traditional_Food.jpg">CC0</a></li>
+      <li><b>№ 012</b> &nbsp;Gunarta &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Tahu_telur_in_Banyuwangi.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+      <li><b>№ 013</b> &nbsp;Wiwik P &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Cilok_kukus.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+      <li><b>№ 014</b> &nbsp;Midori &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Rendang_daging_sapi_asli_Padang.JPG">CC&nbsp;BY&nbsp;3.0</a></li>
+      <li><b>№ 015</b> &nbsp;Raflinoer32 &nbsp;<a href="https://commons.wikimedia.org/wiki/File:Seblak_di_Garut.jpg">CC&nbsp;BY-SA&nbsp;4.0</a></li>
+    </ul>
   </div>
   <div>
     <p class="signoff">
