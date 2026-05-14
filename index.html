@@ -1,0 +1,1860 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Rasa Nusantara — fifteen recipes from the spice islands</title>
+<meta name="description" content="An editorial archive of cooking from across the Indonesian archipelago. Fifteen dishes, with stories, ingredients, and method." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet" />
+<style>
+  /* ------------------------------------------------------------------ *
+   *  RASA NUSANTARA · stylesheet
+   *  An editorial cookbook in a single document.
+   * ------------------------------------------------------------------ */
+
+  :root {
+    /* perceptually-uniform palette */
+    --paper:    oklch(0.948 0.024 80);
+    --paper-2:  oklch(0.915 0.030 76);
+    --rule:     oklch(0.84  0.040 70);
+    --ink:      oklch(0.205 0.040 38);
+    --ink-2:    oklch(0.32  0.050 38);
+    --ink-mute: oklch(0.46  0.035 50);
+    --sambal:   oklch(0.555 0.180 32);
+    --turmeric: oklch(0.74  0.150 78);
+    --pandan:   oklch(0.45  0.090 148);
+    --clove:    oklch(0.30  0.060 42);
+    --ash:      oklch(0.72  0.020 70);
+
+    --font-display: 'Fraunces', 'Iowan Old Style', 'Hoefler Text', serif;
+    --font-body:    'Newsreader', 'Iowan Old Style', Georgia, serif;
+
+    /* fluid type scale */
+    --fs-xs:   clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem);
+    --fs-sm:   clamp(0.84rem, 0.80rem + 0.20vw, 0.95rem);
+    --fs-base: clamp(1.02rem, 0.98rem + 0.22vw, 1.18rem);
+    --fs-md:   clamp(1.18rem, 1.10rem + 0.40vw, 1.45rem);
+    --fs-lg:   clamp(1.75rem, 1.50rem + 1.20vw, 2.50rem);
+    --fs-xl:   clamp(2.50rem, 2.10rem + 2.20vw, 4.20rem);
+    --fs-2xl:  clamp(4.00rem, 3.20rem + 4.50vw, 8.50rem);
+    --fs-3xl:  clamp(6.50rem, 4.50rem + 9.00vw, 14.5rem);
+
+    /* spacing rhythm — varied, not monotone */
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.5rem;
+    --sp-6: 2rem;
+    --sp-7: 3rem;
+    --sp-8: 4rem;
+    --sp-9: 6rem;
+    --sp-10: 9rem;
+
+    --max-page: 78rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: 1.55;
+    font-feature-settings: "kern", "liga", "onum", "ss01";
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* very subtle paper grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(1200px 700px at 12% 8%,  oklch(0.93 0.03 70 / 0.55), transparent 60%),
+      radial-gradient(900px 500px at 90% 95%,  oklch(0.92 0.04 60 / 0.50), transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+    mix-blend-mode: multiply;
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  main, header, footer { position: relative; z-index: 2; }
+
+  ::selection { background: var(--turmeric); color: var(--clove); }
+
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+  a:hover { color: var(--sambal); }
+
+  hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+
+  /* small caps utility */
+  .sc {
+    font-variant: all-small-caps;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+  }
+  .label {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30;
+    font-variant: all-small-caps;
+    letter-spacing: 0.22em;
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    color: var(--ink-mute);
+  }
+
+  .ital { font-style: italic; }
+
+  /* -------------------------------------------------------- masthead */
+  .masthead {
+    padding: clamp(1rem, 2vw, 1.75rem) clamp(1rem, 4vw, 3rem) 0;
+    max-width: var(--max-page);
+    margin: 0 auto;
+  }
+  .masthead-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--sp-4);
+    padding-bottom: var(--sp-3);
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30;
+    font-variant: all-small-caps;
+    letter-spacing: 0.22em;
+    font-size: var(--fs-xs);
+    color: var(--ink-2);
+  }
+  .masthead-bar > :first-child { text-align: left; }
+  .masthead-bar > :nth-child(2) { text-align: center; }
+  .masthead-bar > :last-child   { text-align: right; }
+  .masthead-bar .dot {
+    display: inline-block;
+    width: 0.42em; height: 0.42em;
+    background: var(--sambal);
+    border-radius: 999px;
+    transform: translateY(-0.18em);
+    margin: 0 0.45em;
+  }
+
+  /* -------------------------------------------------------- hero */
+  .hero {
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+    position: relative;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 0, "wght" 400;
+    font-weight: 400;
+    font-size: var(--fs-3xl);
+    line-height: 0.84;
+    letter-spacing: -0.035em;
+    margin: 0;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 350;
+    color: var(--sambal);
+  }
+  .hero-title .amp {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+    color: var(--turmeric);
+    padding: 0 0.06em;
+  }
+  .hero-meta {
+    margin-top: clamp(1.75rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: end;
+    border-top: 1px solid var(--rule);
+    padding-top: var(--sp-4);
+  }
+  .hero-tag {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 70, "wght" 350;
+    font-style: italic;
+    font-size: var(--fs-md);
+    line-height: 1.3;
+    color: var(--ink-2);
+    max-width: 36ch;
+  }
+  .hero-side {
+    text-align: right;
+    font-size: var(--fs-sm);
+    color: var(--ink-mute);
+    line-height: 1.45;
+  }
+  .hero-side b { color: var(--ink-2); font-weight: 600; }
+
+  /* tiny chili pepper sit beside the title */
+  .hero-deco {
+    position: absolute;
+    right: clamp(1rem, 4vw, 3rem);
+    top: clamp(0.75rem, 2vw, 1.5rem);
+    width: clamp(46px, 6vw, 80px);
+    color: var(--sambal);
+    transform: rotate(14deg);
+  }
+
+  /* -------------------------------------------------------- letter / intro */
+  .letter {
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 56rem) {
+    .letter { grid-template-columns: 1fr 2.1fr; }
+  }
+  .letter-rail { border-top: 1px solid var(--ink); padding-top: var(--sp-3); }
+  .letter-rail .label { color: var(--ink); }
+  .letter-rail h2 {
+    margin: var(--sp-3) 0 var(--sp-2);
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 80, "wght" 350;
+    font-style: italic;
+    font-weight: 350;
+    font-size: var(--fs-lg);
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .letter-rail p {
+    margin: 0;
+    color: var(--ink-mute);
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+  }
+  .letter-body { font-size: var(--fs-md); line-height: 1.55; color: var(--ink); }
+  .letter-body p { margin: 0 0 1em; max-width: 56ch; }
+  .letter-body p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 380;
+    font-size: 5em;
+    float: left;
+    line-height: 0.85;
+    padding: 0.06em 0.1em 0 0;
+    color: var(--sambal);
+    margin-top: 0.05em;
+  }
+
+  /* asterism */
+  .aster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8em;
+    color: var(--sambal);
+    margin: clamp(2.5rem, 6vw, 4.5rem) 0;
+    font-size: 1.2rem;
+  }
+  .aster::before, .aster::after {
+    content: "";
+    height: 1px; width: clamp(40px, 8vw, 120px);
+    background: linear-gradient(to right, transparent, var(--rule), transparent);
+  }
+  .aster svg { width: 1.4em; height: 1.4em; }
+
+  /* -------------------------------------------------------- index */
+  .toc {
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 4vw, 3rem);
+  }
+  .toc-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-6);
+    padding-bottom: var(--sp-3);
+    border-bottom: 2px solid var(--ink);
+  }
+  .toc-head h2 {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 10, "wght" 400;
+    font-weight: 400;
+    font-size: var(--fs-xl);
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  .toc-head h2 em {
+    font-style: italic;
+    color: var(--sambal);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 350;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    column-count: 1;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+  }
+  @media (min-width: 48rem) { .toc-list { column-count: 2; } }
+  .toc-list li {
+    break-inside: avoid;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 0.65em;
+    padding: 0.55em 0;
+    border-bottom: 1px dotted var(--rule);
+    transition: color 250ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .toc-list li:hover { color: var(--sambal); }
+  .toc-list a {
+    text-decoration: none;
+    display: contents;
+  }
+  .toc-num {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 0, "wght" 500;
+    font-size: var(--fs-sm);
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  .toc-name {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 30, "wght" 420;
+    font-size: var(--fs-md);
+    line-height: 1.1;
+  }
+  .toc-name .sub {
+    font-style: italic;
+    font-variation-settings: "opsz" 60, "SOFT" 80, "wght" 320;
+    color: var(--ink-mute);
+    font-size: 0.78em;
+    margin-left: 0.4em;
+  }
+  .toc-page {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 0, "wght" 400;
+    font-size: var(--fs-sm);
+    color: var(--ink-2);
+    font-variant-numeric: oldstyle-nums tabular-nums;
+  }
+
+  /* -------------------------------------------------------- recipe */
+  .recipe {
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+    scroll-margin-top: 2rem;
+  }
+  .recipe + .recipe { border-top: 1px solid var(--rule); }
+
+  .recipe-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2rem);
+    margin-bottom: clamp(1.75rem, 4vw, 3rem);
+  }
+  @media (min-width: 56rem) {
+    .recipe-head { grid-template-columns: 9rem 1fr 14rem; align-items: end; }
+  }
+  .recipe-num {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 0, "wght" 280;
+    font-size: clamp(3.25rem, 6vw, 5rem);
+    line-height: 0.85;
+    color: var(--sambal);
+    font-variant-numeric: oldstyle-nums;
+    letter-spacing: -0.02em;
+  }
+  .recipe-num .hash {
+    font-size: 0.45em;
+    font-style: italic;
+    font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 320;
+    color: var(--ink-mute);
+    vertical-align: 0.55em;
+    margin-right: 0.05em;
+  }
+  .recipe-title {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 20, "wght" 380;
+    font-weight: 400;
+    font-size: var(--fs-xl);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .recipe-title em {
+    font-style: italic;
+    color: var(--sambal);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 350;
+  }
+  .recipe-sub {
+    margin-top: 0.4em;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 80, "wght" 320;
+    font-style: italic;
+    font-size: var(--fs-md);
+    color: var(--ink-mute);
+    line-height: 1.2;
+  }
+  .recipe-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-3) var(--sp-4);
+    font-size: var(--fs-xs);
+    line-height: 1.3;
+    border-top: 1px solid var(--ink);
+    padding-top: var(--sp-3);
+  }
+  .recipe-meta dt {
+    font-family: var(--font-display);
+    font-variant: all-small-caps;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .recipe-meta dd {
+    margin: 0.1em 0 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 30, "wght" 420;
+    font-size: var(--fs-sm);
+    color: var(--ink);
+  }
+
+  .recipe-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 56rem) {
+    .recipe-body { grid-template-columns: 1.45fr 1fr; gap: clamp(2rem, 4vw, 4rem); }
+  }
+
+  /* story column */
+  .story p { margin: 0 0 1em; max-width: 56ch; line-height: 1.6; }
+  .story p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 380;
+    font-size: 4.2em;
+    float: left;
+    line-height: 0.85;
+    padding: 0.06em 0.12em 0 0;
+    color: var(--clove);
+    margin-top: 0.08em;
+  }
+  .pull {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 80, "wght" 320;
+    font-style: italic;
+    font-size: var(--fs-lg);
+    line-height: 1.1;
+    color: var(--sambal);
+    border-left: 2px solid var(--sambal);
+    padding: 0.2em 0 0.2em 0.9em;
+    margin: 1.5em 0;
+    max-width: 30ch;
+  }
+  .pull cite { display: block; font-style: normal; font-size: 0.45em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-top: 0.8em; font-variation-settings: "opsz" 24, "SOFT" 0, "wght" 500; }
+
+  /* sidebar with ingredients & method */
+  .recipe-side {
+    background: linear-gradient(180deg, var(--paper-2), var(--paper));
+    border: 1px solid var(--rule);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: 2px;
+    position: relative;
+  }
+  .recipe-side::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid var(--rule);
+    pointer-events: none;
+  }
+  .recipe-side h3 {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 50, "wght" 420;
+    font-size: var(--fs-md);
+    margin: 0 0 var(--sp-3);
+    color: var(--ink);
+    display: flex; align-items: baseline; gap: 0.5em;
+  }
+  .recipe-side h3 em {
+    font-style: italic;
+    font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 320;
+    color: var(--sambal);
+    font-size: 0.7em;
+  }
+  .recipe-side h3 + .leaf { color: var(--pandan); }
+  .recipe-side ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--sp-5);
+    font-size: var(--fs-sm);
+    line-height: 1.55;
+  }
+  .recipe-side ul li {
+    padding: 0.4em 0;
+    border-bottom: 1px dotted var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85em;
+    align-items: baseline;
+  }
+  .recipe-side ul li:last-child { border-bottom: 0; }
+  .qty {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 0, "wght" 500;
+    font-variant-numeric: oldstyle-nums tabular-nums;
+    color: var(--sambal);
+    white-space: nowrap;
+    min-width: 5.5ch;
+  }
+  .recipe-side ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+  }
+  .recipe-side ol li {
+    counter-increment: step;
+    padding: 0.5em 0 0.7em 2.4em;
+    border-bottom: 1px dotted var(--rule);
+    position: relative;
+  }
+  .recipe-side ol li:last-child { border-bottom: 0; }
+  .recipe-side ol li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0; top: 0.55em;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 80, "wght" 360;
+    font-style: italic;
+    font-variant-numeric: oldstyle-nums;
+    color: var(--sambal);
+    font-size: 1.05em;
+  }
+
+  /* chef's note at bottom of recipe */
+  .note {
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    padding: var(--sp-5) 0 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2em;
+    align-items: start;
+    color: var(--ink-2);
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+  }
+  .note .label { white-space: nowrap; color: var(--ink); }
+  .note p { margin: 0; max-width: 70ch; font-style: italic; font-family: var(--font-display); font-variation-settings: "opsz" 24, "SOFT" 80, "wght" 380; }
+
+  /* ornaments */
+  .ornament-strip {
+    margin: clamp(2rem, 4vw, 3rem) auto 0;
+    max-width: var(--max-page);
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    display: flex; justify-content: center;
+  }
+  .ornament-strip svg { color: var(--ink-2); }
+
+  /* origin chip */
+  .origin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30;
+    font-variant: all-small-caps;
+    letter-spacing: 0.18em;
+    font-size: var(--fs-xs);
+    color: var(--clove);
+    margin-bottom: 0.6em;
+  }
+  .origin::before {
+    content: "";
+    width: 1.7em; height: 1px; background: var(--clove);
+  }
+
+  /* colophon */
+  footer.colophon {
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem);
+    border-top: 2px solid var(--ink);
+    margin-top: clamp(3rem, 6vw, 5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 56rem) {
+    footer.colophon { grid-template-columns: 1.5fr 1fr 1fr; }
+  }
+  footer h3 {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 50, "wght" 380;
+    font-size: var(--fs-md);
+    margin: 0 0 var(--sp-3);
+  }
+  footer p { margin: 0 0 0.8em; font-size: var(--fs-sm); line-height: 1.55; color: var(--ink-2); max-width: 52ch; }
+  .signoff {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 320;
+    font-style: italic;
+    font-size: var(--fs-xl);
+    line-height: 0.95;
+    color: var(--sambal);
+    margin: 0;
+  }
+  .signoff small {
+    display: block;
+    font-style: normal;
+    font-variant: all-small-caps;
+    letter-spacing: 0.22em;
+    font-size: 0.22em;
+    color: var(--ink-mute);
+    margin-top: 0.8em;
+    font-variation-settings: "opsz" 14, "SOFT" 0, "wght" 500;
+  }
+
+  /* sticky page-corner indicator */
+  .corner {
+    position: fixed;
+    bottom: clamp(0.75rem, 2vw, 1.5rem);
+    right: clamp(0.75rem, 2vw, 1.5rem);
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 0.55em 0.85em;
+    z-index: 50;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 30;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.6em;
+    box-shadow: 0 1px 0 0 var(--ink);
+    transition: transform 400ms cubic-bezier(0.2,0.7,0.2,1), opacity 400ms;
+  }
+  .corner b {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 30, "wght" 500;
+    color: var(--sambal);
+    font-variant-numeric: oldstyle-nums tabular-nums;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .corner .dot {
+    display: inline-block; width: 0.4em; height: 0.4em;
+    background: var(--sambal); border-radius: 999px;
+  }
+  .corner.hidden { transform: translateY(140%); opacity: 0; pointer-events: none; }
+
+  /* thin progress meter */
+  .progress {
+    position: fixed; left: 0; top: 0; right: 0;
+    height: 2px;
+    background: transparent;
+    z-index: 60;
+  }
+  .progress span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--sambal);
+    transform-origin: 0 0;
+  }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 800ms cubic-bezier(0.2,0.7,0.2,1), transform 900ms cubic-bezier(0.2,0.7,0.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* link to top */
+  .return {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-top: var(--sp-5);
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 30;
+    font-variant: all-small-caps;
+    letter-spacing: 0.2em;
+    font-size: var(--fs-xs);
+    color: var(--ink-mute);
+    text-decoration: none;
+  }
+  .return:hover { color: var(--sambal); }
+  .return::before { content: "↑"; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* container query: tighten recipe side at narrow widths */
+  .recipe-body { container-type: inline-size; }
+  @container (max-width: 36rem) {
+    .recipe-side { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="masthead" role="banner">
+  <div class="masthead-bar">
+    <span>Vol. I &nbsp;·&nbsp; № 01</span>
+    <span>Rasa<span class="dot"></span>Nusantara</span>
+    <span>An archipelago, in fifteen plates</span>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <svg class="hero-deco" viewBox="0 0 100 160" fill="none" aria-hidden="true">
+    <path d="M50 12 C 70 28, 78 60, 70 100 C 64 130, 52 150, 44 156 C 48 140, 50 124, 46 108 C 38 76, 34 50, 50 12 Z"
+          fill="currentColor" />
+    <path d="M50 12 C 56 8, 64 6, 68 14 C 64 12, 58 12, 54 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+
+  <h1 class="hero-title reveal">
+    Rasa <em>Nusantara</em><br/>
+    <span style="font-variation-settings:'opsz' 144,'SOFT' 40,'wght' 280; font-style:italic; font-size:0.55em; letter-spacing:-0.01em; color:var(--ink-2);">
+      a cookbook of seventeen<br/>thousand islands.
+    </span>
+  </h1>
+
+  <div class="hero-meta">
+    <p class="hero-tag reveal">
+      Fifteen recipes drawn from Padang kitchens, Banyumas tempeh pans, Madurese charcoal grills, Bandung roadside carts and the meatball stalls of Java —
+      printed here in one slim, well-spiced volume.
+    </p>
+    <div class="hero-side reveal">
+      <b>Printed</b> on warm paper&nbsp;&nbsp;·&nbsp;&nbsp; <b>Set</b> in Fraunces &amp; Newsreader<br/>
+      <b>Edition</b> of one&nbsp;&nbsp;·&nbsp;&nbsp; <b>Pages</b> ix + 96<br/>
+      <b>Anjuran</b> — read with a cup of <span class="ital">kopi tubruk</span>.
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ===================== EDITOR'S LETTER ===================== -->
+<section class="letter">
+  <aside class="letter-rail reveal">
+    <span class="label">From the editor</span>
+    <h2>On smoke,<br/>spice, &amp; the<br/>long simmer.</h2>
+    <p>A short note on why this volume exists, and on the kitchens it grew out of.</p>
+  </aside>
+  <div class="letter-body reveal">
+    <p>
+      Indonesia does not cook with one voice. Sumatran kitchens reduce coconut milk for hours until it turns oil-black; Javanese ones lean on palm sugar, soy and the slow patience of <span class="ital">gulai</span>; Sundanese cooks worship freshness — raw greens, a pestle of <span class="ital">sambal</span>, rice still steaming. Bali grinds spice paste with lemongrass and lime leaf and wraps it around fish. Bandung deep-fries everything.
+    </p>
+    <p>
+      What unites these tables is not technique, nor even a shared ingredient — it is a relationship to heat. The chilli, the charcoal, the deep wok, the patient stockpot. Smoke that hangs in the warung's bamboo rafters. The quick fry of a tempeh, half-cooked on purpose. The long, dark wedding of beef and coconut that eventually becomes <span class="ital">rendang</span>.
+    </p>
+    <p>
+      The fifteen recipes that follow are not the whole story; they are an opening. Cook one a week and you will have eaten Indonesia for almost four months. Cook them in order and you will have crossed Sumatra, Java, Bali and back. Cook them out of order — which is, of course, how anyone actually cooks — and you will simply have eaten very well.
+    </p>
+  </div>
+</section>
+
+<div class="aster" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></svg>
+</div>
+
+<!-- ===================== INDEX ===================== -->
+<section class="toc" id="contents">
+  <div class="toc-head reveal">
+    <span class="label">The Index</span>
+    <h2>Contents, <em>arranged</em><br/>by hunger.</h2>
+    <span class="label">№001 — №015</span>
+  </div>
+  <ol class="toc-list reveal">
+    <li><a href="#r01"><span class="toc-num">№ 001</span><span class="toc-name">Nasi Goreng <span class="sub">fried rice, after midnight</span></span><span class="toc-page">12</span></a></li>
+    <li><a href="#r02"><span class="toc-num">№ 002</span><span class="toc-name">Nasi Padang <span class="sub">the Minang table</span></span><span class="toc-page">18</span></a></li>
+    <li><a href="#r03"><span class="toc-num">№ 003</span><span class="toc-name">Soto Purbalingga <span class="sub">peanut soto from Banyumas</span></span><span class="toc-page">24</span></a></li>
+    <li><a href="#r04"><span class="toc-num">№ 004</span><span class="toc-name">Mendoan <span class="sub">half-cooked tempeh</span></span><span class="toc-page">29</span></a></li>
+    <li><a href="#r05"><span class="toc-num">№ 005</span><span class="toc-name">Sop Durian <span class="sub">a dessert soup</span></span><span class="toc-page">32</span></a></li>
+    <li><a href="#r06"><span class="toc-num">№ 006</span><span class="toc-name">Sate Ayam <span class="sub">Madura chicken skewers</span></span><span class="toc-page">36</span></a></li>
+    <li><a href="#r07"><span class="toc-num">№ 007</span><span class="toc-name">Bakso <span class="sub">meatballs, very clear broth</span></span><span class="toc-page">42</span></a></li>
+    <li><a href="#r08"><span class="toc-num">№ 008</span><span class="toc-name">Bubur Ayam <span class="sub">a Jakarta breakfast</span></span><span class="toc-page">48</span></a></li>
+    <li><a href="#r09"><span class="toc-num">№ 009</span><span class="toc-name">Sate Lilit <span class="sub">Balinese satay on lemongrass</span></span><span class="toc-page">54</span></a></li>
+    <li><a href="#r10"><span class="toc-num">№ 010</span><span class="toc-name">Nasi Pecel <span class="sub">vegetables, peanut sauce</span></span><span class="toc-page">60</span></a></li>
+    <li><a href="#r11"><span class="toc-num">№ 011</span><span class="toc-name">Ketoprak <span class="sub">a Jakarta cart classic</span></span><span class="toc-page">66</span></a></li>
+    <li><a href="#r12"><span class="toc-num">№ 012</span><span class="toc-name">Tahu Telur <span class="sub">tofu omelette, Surabaya</span></span><span class="toc-page">72</span></a></li>
+    <li><a href="#r13"><span class="toc-num">№ 013</span><span class="toc-name">Cilok <span class="sub">tapioca balls on a stick</span></span><span class="toc-page">76</span></a></li>
+    <li><a href="#r14"><span class="toc-num">№ 014</span><span class="toc-name">Rendang <span class="sub">the long dark cook</span></span><span class="toc-page">82</span></a></li>
+    <li><a href="#r15"><span class="toc-num">№ 015</span><span class="toc-name">Seblak <span class="sub">Bandung, after school</span></span><span class="toc-page">90</span></a></li>
+  </ol>
+</section>
+
+<div class="ornament-strip" aria-hidden="true">
+  <svg width="640" height="32" viewBox="0 0 640 32" fill="none" stroke="currentColor" stroke-width="1">
+    <path d="M0 16 L260 16" />
+    <circle cx="280" cy="16" r="3" fill="currentColor" />
+    <path d="M298 16 q 11 -11 22 0 q 11 11 22 0" />
+    <circle cx="360" cy="16" r="3" fill="currentColor" />
+    <path d="M380 16 L640 16" />
+  </svg>
+</div>
+
+<!-- ============================================================== *
+ *  RECIPES                                                       *
+ * ============================================================== -->
+
+<!-- ============================ № 001 ============================ -->
+<article class="recipe" id="r01">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>001</div>
+    <div>
+      <span class="origin">Java &nbsp;/&nbsp; Indonesia</span>
+      <h2 class="recipe-title">Nasi <em>Goreng</em></h2>
+      <p class="recipe-sub">Fried rice, eaten at any hour — especially the small ones.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>2</dd></div>
+      <div><dt>Time</dt><dd>25 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Java-wide</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        No dish travels through the night quite like <span class="ital">nasi goreng</span>. It is what the warung makes when the rice is yesterday's, when the wok is already hot, when the last of the sweet soy is in the bottle. It is what a Jakarta street-cook ladles onto a plate at one in the morning while a moped engine cools beside the cart. The trick is not in the ingredients — every household has a different version — but in the heat: high, fast, never crowded.
+      </p>
+      <p>
+        Use cold rice. Day-old rice from the fridge is non-negotiable; freshly steamed grains will steam, not fry. Pound your spice paste, do not blend it — a mortar bruises shallot and garlic differently, and the wok will know.
+      </p>
+      <p class="pull">
+        Kecap manis is to nasi goreng what soy sauce is to fried rice everywhere else — except that it is also sugar, and molasses, and a small religion.
+        <cite>— A warung cook, Yogyakarta</cite>
+      </p>
+      <p>
+        Finish with a fried egg whose yolk is still loose, a snow of fried shallots, sliced cucumber, tomato wedges, and a few sheets of <span class="ital">kerupuk</span> shattered over the top. Sambal on the side — never on top. Eat with a spoon.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">400 g</span><span>day-old jasmine rice, broken up with wet hands</span></li>
+        <li><span class="qty">4</span><span>shallots, peeled</span></li>
+        <li><span class="qty">3</span><span>cloves garlic</span></li>
+        <li><span class="qty">2–3</span><span>red bird's-eye chillies, to taste</span></li>
+        <li><span class="qty">1 tsp</span><span>shrimp paste (<span class="ital">terasi</span>), toasted</span></li>
+        <li><span class="qty">150 g</span><span>chicken thigh or peeled prawns, diced</span></li>
+        <li><span class="qty">2</span><span>eggs, plus 2 for frying on top</span></li>
+        <li><span class="qty">3 Tbsp</span><span>kecap manis (sweet soy)</span></li>
+        <li><span class="qty">1 Tbsp</span><span>light soy sauce</span></li>
+        <li><span class="qty">2 stalks</span><span>scallion, sliced</span></li>
+        <li><span class="qty">to serve</span><span>fried shallots, cucumber, tomato, prawn crackers, sambal</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Pound shallots, garlic, chillies and toasted shrimp paste in a mortar to a coarse paste.</li>
+        <li>Heat 2 Tbsp neutral oil in a wok over the highest flame you have. When it shimmers, add the paste. Fry until it turns one shade darker and smells sweet, 90 seconds.</li>
+        <li>Add the diced chicken or prawn. Toss until just cooked, 2 minutes.</li>
+        <li>Push everything to the side. Crack 2 eggs into the cleared space. Scramble loosely, then break up the curd.</li>
+        <li>Add the cold rice. Toss in long arcs — do not stir. Let it sit against the metal between tosses so the grains catch.</li>
+        <li>Stream the kecap manis around the wok rim, then the light soy. Toss until every grain wears a copper coat, 2 minutes.</li>
+        <li>Off the heat, fold in scallions. Plate. Top each portion with a fried egg whose edges are lace.</li>
+        <li>Garnish with fried shallots, cucumber half-moons, tomato, and shattered prawn crackers. Sambal on the side.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>If your kecap manis is thin, simmer it with a thumb of palm sugar for two minutes and let it cool — it will glaze the rice like lacquer.</p>
+  </div>
+</article>
+
+<!-- ============================ № 002 ============================ -->
+<article class="recipe" id="r02">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>002</div>
+    <div>
+      <span class="origin">West Sumatra &nbsp;/&nbsp; Padang</span>
+      <h2 class="recipe-title">Nasi <em>Padang</em></h2>
+      <p class="recipe-sub">Not a dish, but a table — the Minang spread of many small bowls.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4–6</dd></div>
+      <div><dt>Time</dt><dd>3+ hours</dd></div>
+      <div><dt>Difficulty</dt><dd>Project</dd></div>
+      <div><dt>Region</dt><dd>Minangkabau</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        Walk into a <span class="ital">rumah makan Padang</span> anywhere from Bukittinggi to Rotterdam and the same theatre unfolds: a waiter approaches the table balancing twelve, fifteen, twenty small plates up his arms like a pianist's chord. He sets them all down. You eat what you touch; the rest is taken away and you pay only for what you ate. The food does not arrive — it is unfurled.
+      </p>
+      <p>
+        At its heart is a mound of steamed rice. Around it: the obligatory <span class="ital">rendang</span> (see №014), a green chilli <span class="ital">sambal hijau</span> the colour of new tea leaves, a brothy <span class="ital">gulai</span> of leafy greens, a piece of fried fish, perhaps <span class="ital">ayam pop</span> — pale poached chicken with a brick-red sambal, and a ladle of curry sauce poured greedily over the rice. The Minang refer to this last act as <span class="ital">kuah disiram</span>, "the sauce is bathed on."
+      </p>
+      <p class="pull">
+        At a Padang table you do not order food. You order rice. Everything else is the negotiation.
+      </p>
+      <p>
+        Below is the abbreviated version: a single Padang plate to assemble at home. Make the rendang the day before. Today you will only need to fry, blend, and arrange.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;the spread</em></h3>
+      <ul>
+        <li><span class="qty">800 g</span><span>jasmine rice, steamed</span></li>
+        <li><span class="qty">1 bowl</span><span>beef rendang (recipe №014)</span></li>
+        <li><span class="qty">4</span><span>chicken thighs, for ayam pop</span></li>
+        <li><span class="qty">1 bunch</span><span>cassava leaves or kale, for gulai daun</span></li>
+        <li><span class="qty">400 ml</span><span>coconut milk</span></li>
+        <li><span class="qty">12</span><span>green bird's-eye chillies</span></li>
+        <li><span class="qty">6</span><span>green long chillies</span></li>
+        <li><span class="qty">3</span><span>shallots, 2 garlic, 1 tomato</span></li>
+        <li><span class="qty">2</span><span>kaffir lime leaves, 2 salam leaves</span></li>
+        <li><span class="qty">1 thumb</span><span>galangal, bruised; 1 stalk lemongrass</span></li>
+        <li><span class="qty">to serve</span><span>fried boiled egg, sliced cucumber, kerupuk</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;the table</em></h3>
+      <ol>
+        <li>For <span class="ital">ayam pop</span>: poach chicken thighs in coconut water with garlic and salt for 25 minutes. Drain, then pan-fry briefly in oil until just blushing — they should remain pale.</li>
+        <li>For <span class="ital">sambal hijau</span>: blanch the green chillies and shallots for 30 seconds, then pound coarsely with garlic, tomato and salt. Fry in 3 Tbsp oil with a kaffir lime leaf until darkened, 4 minutes.</li>
+        <li>For <span class="ital">gulai daun</span>: simmer coconut milk with bruised galangal, lemongrass, salam leaves and a pinch of turmeric for 10 minutes. Add the greens; cook 5 minutes more.</li>
+        <li>Reheat the rendang gently.</li>
+        <li>To plate: a generous heap of rice in the centre. Around it, a piece of ayam pop, a spoon of sambal hijau, a small bowl of gulai, a piece of rendang, a halved fried egg, cucumber, kerupuk.</li>
+        <li>Ladle a spoon of gulai sauce over a corner of the rice. Eat with your right hand or a spoon and fork — the fork pushes, the spoon scoops.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>A Padang plate is judged by its sambal first. If your green sambal does not bite you back, add another chilli; do not add salt.</p>
+  </div>
+</article>
+
+<!-- ============================ № 003 ============================ -->
+<article class="recipe" id="r03">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>003</div>
+    <div>
+      <span class="origin">Central Java &nbsp;/&nbsp; Banyumas</span>
+      <h2 class="recipe-title">Soto <em>Purbalingga</em></h2>
+      <p class="recipe-sub">Also called <span class="ital">sroto Sokaraja</span> — the only soto with a peanut sauce.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4</dd></div>
+      <div><dt>Time</dt><dd>1 h 30 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Medium</dd></div>
+      <div><dt>Region</dt><dd>Banyumas</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        Every region of Java has a <span class="ital">soto</span>, and every soto is a slight argument with the others. Purbalingga's version — sometimes labelled <span class="ital">sroto Sokaraja</span> after the neighbouring town — does what no other soto does: it ends with a spoonful of peanut-and-chilli sauce stirred into the bowl at the last second. The broth turns rust-orange. The whole soup gains weight.
+      </p>
+      <p>
+        It is a beef-and-chicken broth, golden with turmeric, served over pressed rice cakes (<span class="ital">ketupat</span>) with beansprouts, fried shallots, scallion, and rice noodles. The peanut sauce is similar to a gado-gado dressing but thinner, brighter, less sweet. A traditional bowl also receives a few squares of crisp <span class="ital">kerupuk</span> on top, which collapse luxuriously into the soup.
+      </p>
+      <p class="pull">
+        A bowl of sroto travels well; the peanut sauce is added at the table, never in the pot.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">500 g</span><span>beef brisket, in one piece</span></li>
+        <li><span class="qty">2</span><span>chicken legs (for double-stock)</span></li>
+        <li><span class="qty">2 L</span><span>cold water</span></li>
+        <li><span class="qty">6</span><span>shallots, 4 cloves garlic</span></li>
+        <li><span class="qty">2 thumbs</span><span>ginger, 1 thumb turmeric</span></li>
+        <li><span class="qty">3</span><span>candlenuts (or macadamia)</span></li>
+        <li><span class="qty">2 stalks</span><span>lemongrass, bruised</span></li>
+        <li><span class="qty">4</span><span>kaffir lime leaves, 2 salam leaves</span></li>
+        <li><span class="qty">for sauce</span><span>100 g roasted peanuts, 4 chillies, 1 garlic, 1 Tbsp palm sugar, splash tamarind</span></li>
+        <li><span class="qty">to serve</span><span>ketupat or rice, vermicelli, beansprouts, scallion, fried shallots, kerupuk merah</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Cover beef and chicken with cold water, bring to a gentle simmer, skimming foam. Cook 45 minutes uncovered.</li>
+        <li>Meanwhile, pound shallots, garlic, ginger, turmeric and candlenuts to a paste. Fry in 3 Tbsp oil until fragrant and oil splits, 4 minutes.</li>
+        <li>Add the paste to the simmering broth with bruised lemongrass, kaffir and salam leaves. Continue cooking 30 minutes more, until beef is fork-tender.</li>
+        <li>Lift out meats, slice thin, return scraps to the pot. Season the broth with salt and a teaspoon of sugar.</li>
+        <li>For the peanut sauce: pound peanuts with fried chillies, garlic, palm sugar, tamarind and a pinch of salt to a thick paste. Thin with 6 Tbsp hot broth.</li>
+        <li>In each bowl: a few ketupat cubes or rice, a nest of softened vermicelli, beansprouts, sliced meat. Ladle hot broth over.</li>
+        <li>Finish with a spoon of peanut sauce, scallion, fried shallots, and a couple of kerupuk on top.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>For a Sokaraja-style bowl, look for <span class="ital">kerupuk merah</span> — bright pink prawn crackers. They are decorative and structural; do not skip them.</p>
+  </div>
+</article>
+
+<!-- ============================ № 004 ============================ -->
+<article class="recipe" id="r04">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>004</div>
+    <div>
+      <span class="origin">Central Java &nbsp;/&nbsp; Banyumas</span>
+      <h2 class="recipe-title"><em>Mendoan</em></h2>
+      <p class="recipe-sub">Half-fried tempeh, soft in the middle, eaten while still snapping.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>2–3</dd></div>
+      <div><dt>Time</dt><dd>20 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Banyumas</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        <span class="ital">Mendoan</span> is the most counter-intuitive thing in Indonesian frying: tempeh battered, dropped briefly into hot oil, and pulled out before it is fully cooked. The word itself, in Banyumas Javanese, means "half-done." The skin is barely set; the inside is still tender, almost custardy from the nutty soy paste of the tempeh. You eat it at a roadside stall in Purwokerto, dipped in soy sauce with a sliced bird's-eye chilli floating in it, between two cups of tea.
+      </p>
+      <p>
+        The batter is rice flour with turmeric and ground coriander, fragrant with garlic and minced scallion. The tempeh must be very thin — proper mendoan tempeh is sold in wide, paper-thin sheets specifically for this dish.
+      </p>
+      <p class="pull">
+        Mendoan is not crispy. If it is crispy, you have made <span class="ital">tempe goreng</span>. They are different foods.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">300 g</span><span>tempeh, sliced as thin as possible (3 mm)</span></li>
+        <li><span class="qty">120 g</span><span>rice flour</span></li>
+        <li><span class="qty">2 Tbsp</span><span>plain flour</span></li>
+        <li><span class="qty">1 tsp</span><span>ground coriander</span></li>
+        <li><span class="qty">½ tsp</span><span>ground turmeric</span></li>
+        <li><span class="qty">3</span><span>cloves garlic, finely grated</span></li>
+        <li><span class="qty">2 stalks</span><span>scallion, very finely sliced</span></li>
+        <li><span class="qty">1 tsp</span><span>salt, a pinch of sugar</span></li>
+        <li><span class="qty">~200 ml</span><span>cold water</span></li>
+        <li><span class="qty">for serving</span><span>kecap manis with sliced bird's-eye chillies</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Whisk the dry ingredients in a wide bowl. Add garlic, scallion, and gradually whisk in cold water to a pancake-batter consistency.</li>
+        <li>Heat 1.5 cm of neutral oil in a wide pan to about 180 °C — hot but not smoking.</li>
+        <li>Dip each tempeh slice in the batter, letting excess drip off briefly.</li>
+        <li>Slide into the oil. Fry 60–90 seconds total, flipping once. The batter should just set — pale yellow, not brown.</li>
+        <li>Drain very briefly on paper. Eat immediately, dipped into kecap manis with a slice of fresh bird's-eye chilli.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>If your tempeh sheets aren't paper-thin, butterfly each piece — a 3 mm slice opens to a 1.5 mm sheet, which is exactly what mendoan wants.</p>
+  </div>
+</article>
+
+<!-- ============================ № 005 ============================ -->
+<article class="recipe" id="r05">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>005</div>
+    <div>
+      <span class="origin">North Sumatra &nbsp;/&nbsp; Medan</span>
+      <h2 class="recipe-title">Sop <em>Durian</em></h2>
+      <p class="recipe-sub">The dessert soup of the king of fruits.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4</dd></div>
+      <div><dt>Time</dt><dd>15 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Sumatra</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        In Medan, at the night markets behind the cathedral, vendors keep two things on the counter: ripe durian, and shaved ice. From these and a few small additions emerges <span class="ital">sop durian</span> — a sweet soup that is half-dessert, half-shock. Flesh from a generously ripe durian is set in the bottom of a tall glass, drowned in chilled coconut milk sweetened with palm sugar and scented with pandan, then topped with shaved ice. Black glutinous rice or jellies are optional accomplices.
+      </p>
+      <p>
+        It is not a recipe in the technical sense — it is an assembly. The difficulty is entirely upstream: locating a durian that is properly ripe, neither stringy nor sour, and convincing it to give you its flesh whole.
+      </p>
+      <p class="pull">
+        Durian smells of everything and tastes of itself; here, ice and coconut play the chorus to its single, very loud aria.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">300 g</span><span>ripe durian flesh, seeds removed</span></li>
+        <li><span class="qty">400 ml</span><span>coconut milk, cold</span></li>
+        <li><span class="qty">80 g</span><span>palm sugar (<span class="ital">gula merah</span>), shaved</span></li>
+        <li><span class="qty">2 leaves</span><span>pandan, knotted</span></li>
+        <li><span class="qty">1 pinch</span><span>salt</span></li>
+        <li><span class="qty">to serve</span><span>shaved ice, cooked black glutinous rice, sago pearls or grass jelly</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Combine palm sugar with 4 Tbsp water in a small pan with the pandan leaves. Warm gently until dissolved. Let cool. Discard pandan.</li>
+        <li>Whisk the palm syrup, coconut milk and a pinch of salt together. Chill thoroughly.</li>
+        <li>To assemble: place a spoon of black glutinous rice or sago in the bottom of a tall glass. Add a generous handful of durian flesh.</li>
+        <li>Pour the cold coconut over until almost full. Crown with shaved ice.</li>
+        <li>Serve with a long spoon and a short attention span.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>If durian is not at the market, this recipe works almost as well with very ripe mango or jackfruit — the texture is different but the assembly is right.</p>
+  </div>
+</article>
+
+<!-- ============================ № 006 ============================ -->
+<article class="recipe" id="r06">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>006</div>
+    <div>
+      <span class="origin">East Java &nbsp;/&nbsp; Madura</span>
+      <h2 class="recipe-title">Sate <em>Ayam</em></h2>
+      <p class="recipe-sub">Charcoal chicken skewers with a peanut sauce that has weight.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4</dd></div>
+      <div><dt>Time</dt><dd>45 min + marinade</dd></div>
+      <div><dt>Difficulty</dt><dd>Medium</dd></div>
+      <div><dt>Region</dt><dd>Madura</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        A Madurese satay seller arrives at his corner of a city — Surabaya, Malang, Jakarta — with a small bamboo fan, a long brazier, a tin of skewers, and a bottle of kecap manis. He fans, the coals glow, the bird begins to char. By the time the skewers are turned, the air around him is sweet, smoky, slightly stinging. He sells them in tens, on a banana leaf, beside a heap of pressed rice cakes (<span class="ital">lontong</span>) and a brown pool of peanut sauce.
+      </p>
+      <p>
+        Marinate the chicken not for tenderness — thigh handles fire on its own — but for flavour. Kecap manis caramelises onto the skewer; the meat takes a lacquer. The peanut sauce is its own affair: pounded roasted peanuts, kecap manis, garlic, fried shallot, a whisper of lime.
+      </p>
+      <p class="pull">
+        A Madurese satay seller does not call. He fans. The smell calls.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">600 g</span><span>boneless chicken thigh, in 2 cm cubes</span></li>
+        <li><span class="qty">3 Tbsp</span><span>kecap manis, plus more for grilling</span></li>
+        <li><span class="qty">2 Tbsp</span><span>light soy sauce</span></li>
+        <li><span class="qty">3</span><span>cloves garlic, grated</span></li>
+        <li><span class="qty">1 Tbsp</span><span>neutral oil</span></li>
+        <li><span class="qty">1 tsp</span><span>ground coriander</span></li>
+        <li><span class="qty">20</span><span>bamboo skewers, soaked</span></li>
+        <li><span class="qty">for sauce</span><span>180 g roasted peanuts, 4 fried shallots, 2 cloves fried garlic, 4 Tbsp kecap manis, 1 Tbsp tamarind water, 2 red chillies, salt</span></li>
+        <li><span class="qty">to serve</span><span>lontong or rice, sliced shallot, lime, pickled cucumber</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Whisk kecap manis, soy, garlic, oil and coriander. Marinate the chicken at least 1 hour, preferably overnight.</li>
+        <li>For the peanut sauce: pound peanuts, fried shallots, fried garlic and chillies to a thick paste. Stir in kecap manis, tamarind, and just enough hot water to make it spoonable. Salt to taste.</li>
+        <li>Thread 4–5 cubes per skewer, packed tightly together — they shield each other from drying out.</li>
+        <li>Light a charcoal grill. When the coals are white-hot, fan with vigour as you grill the skewers, 2–3 minutes per side. Brush twice with extra kecap manis during cooking.</li>
+        <li>Arrange skewers on a plate with sliced shallot, a wedge of lime, and rice or lontong. Spoon the peanut sauce generously over the top.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>Charcoal is non-negotiable. A gas flame will cook chicken; only embers will give satay its proper, smoke-shadowed sweetness.</p>
+  </div>
+</article>
+
+<!-- ============================ № 007 ============================ -->
+<article class="recipe" id="r07">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>007</div>
+    <div>
+      <span class="origin">Java &nbsp;/&nbsp; Chinese-Indonesian</span>
+      <h2 class="recipe-title"><em>Bakso</em></h2>
+      <p class="recipe-sub">Beef meatball soup. A bell rings; a cart appears.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4</dd></div>
+      <div><dt>Time</dt><dd>1 h 30 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Medium</dd></div>
+      <div><dt>Region</dt><dd>Java-wide</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        A bakso seller pushes a wooden cart through residential streets at dusk, banging a porcelain bowl with a spoon — <span class="ital">tok, tok, tok</span> — and within half a block, six children are at his elbow asking for a portion. The bowl: a clear beef broth, a knot of yellow noodles, two or three pale meatballs the size of small clementines, a square of fried tofu also stuffed with meatball mix, a sliced wonton, beansprouts, scallion, fried shallots. A spoon of sambal, a drizzle of black soy. Eat fast, before the broth cools.
+      </p>
+      <p>
+        The meatballs are the work. They are pounded — not minced, pounded — until the meat becomes a paste, with tapioca starch and ice water folded in so they remain bouncy and pale. A cook in Solo will tell you, gravely, that the bounce of a <span class="ital">bakso</span> is its honesty.
+      </p>
+      <p class="pull">
+        A meatball that does not bounce when dropped is a meatball that has lied about its ingredients.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">500 g</span><span>lean beef (eye round), very cold, in chunks</span></li>
+        <li><span class="qty">120 g</span><span>tapioca starch</span></li>
+        <li><span class="qty">100 ml</span><span>iced water</span></li>
+        <li><span class="qty">4</span><span>cloves garlic, grated</span></li>
+        <li><span class="qty">2 tsp</span><span>salt, ½ tsp white pepper, ½ tsp baking powder</span></li>
+        <li><span class="qty">for broth</span><span>1 kg beef bones, 1 onion, 4 cloves garlic, 1 thumb ginger, 1 tsp coriander seed, salt</span></li>
+        <li><span class="qty">to serve</span><span>egg noodles, vermicelli, beansprouts, fried wontons, scallion, fried shallots, sweet soy, sambal, celery leaf</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Roast the bones at 220 °C for 30 minutes. Transfer to a stockpot, cover with 3 L cold water, bring to a simmer with onion, garlic, ginger and coriander. Skim, then cook 90 minutes. Strain and salt to taste.</li>
+        <li>For the meatballs: blitz the very cold beef in a food processor with garlic, salt, pepper and baking powder until completely smooth — almost a pâté.</li>
+        <li>Add iced water gradually, then the tapioca, pulsing until the mixture is glossy and stretchy.</li>
+        <li>Bring a wide pan of salted water to a bare simmer (not a boil). Shape meatballs by squeezing the paste between thumb and forefinger and scooping with a wet spoon.</li>
+        <li>Drop each one into the water as it forms. They will sink, then float. Cook 4 minutes after floating. Set aside.</li>
+        <li>To serve: divide noodles, vermicelli and beansprouts among bowls. Top with 3–4 meatballs each, fried wontons, scallion. Ladle hot broth over. Finish with kecap manis, sambal, fried shallots, celery leaf.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>Every step that is cold should stay cold. Warm meat absorbs starch unevenly and the bakso will turn floury — the enemy of bounce.</p>
+  </div>
+</article>
+
+<!-- ============================ № 008 ============================ -->
+<article class="recipe" id="r08">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>008</div>
+    <div>
+      <span class="origin">Java &nbsp;/&nbsp; Jakarta</span>
+      <h2 class="recipe-title">Bubur <em>Ayam</em></h2>
+      <p class="recipe-sub">Rice porridge, eaten at first light from a passing cart.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4</dd></div>
+      <div><dt>Time</dt><dd>1 h</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Java-wide</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        Before Jakarta wakes up, the bubur sellers are already on their corners. They cook the porridge overnight on a low flame so that by 5 a.m. the rice has dissolved entirely — what they ladle out is a soft, glossy white. Onto it goes shredded poached chicken, sliced scallion, fried shallots, soybeans, kerupuk, a length of crisp <span class="ital">cakwe</span> (Chinese fried dough), a drizzle of soy sauce, a spoon of yellow chicken jus, a smudge of sambal.
+      </p>
+      <p>
+        The question of whether to stir the bubur or eat it in layers is, in Jakarta, a question with two factions. <span class="ital">Diaduk</span> (stirred) belongs to the practical. <span class="ital">Tidak diaduk</span> (not stirred) belongs to the romantic. There is no third position.
+      </p>
+      <p class="pull">
+        Bubur is the only Indonesian breakfast eaten standing up; everyone is in a hurry.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">200 g</span><span>jasmine rice, rinsed</span></li>
+        <li><span class="qty">2 L</span><span>chicken stock (plus more)</span></li>
+        <li><span class="qty">2</span><span>chicken thighs, on the bone</span></li>
+        <li><span class="qty">1 thumb</span><span>ginger, smashed</span></li>
+        <li><span class="qty">2 cloves</span><span>garlic, smashed</span></li>
+        <li><span class="qty">1 stalk</span><span>lemongrass, bruised</span></li>
+        <li><span class="qty">2</span><span>pandan leaves, knotted</span></li>
+        <li><span class="qty">1 tsp</span><span>salt, white pepper</span></li>
+        <li><span class="qty">for yellow jus</span><span>2 shallots, 1 garlic, ½ tsp turmeric, reserved poaching liquid</span></li>
+        <li><span class="qty">to serve</span><span>cakwe, fried soybeans (<span class="ital">kedelai goreng</span>), scallion, fried shallots, kerupuk, kecap manis, sambal</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Poach the chicken in 1 L stock with ginger, garlic and lemongrass for 25 minutes. Lift out, cool, shred. Reserve the poaching liquid.</li>
+        <li>In a heavy pot, combine rice with the remaining stock and pandan. Bring to a simmer; cook on the lowest possible heat, stirring often, until the rice dissolves — about 50 minutes. Add more stock if too thick. Salt to taste.</li>
+        <li>For the yellow jus: pound shallots, garlic and turmeric to a paste. Fry in 1 Tbsp oil, then loosen with 200 ml of the reserved poaching liquid. Simmer 5 minutes.</li>
+        <li>To serve: ladle bubur into a wide bowl. Pile shredded chicken on one side, fried soybeans on another, scattered fried shallots, scallion. Drape a length of cakwe across the top.</li>
+        <li>At the table: a spoon of yellow jus, a drizzle of kecap manis, a smudge of sambal, a few sheets of kerupuk crumbled in. Stir, or don't.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>If you cannot find cakwe (<span class="ital">youtiao</span> in Chinese bakeries), a thick slice of grilled sourdough, oiled and crisp at the edges, will keep the textural promise.</p>
+  </div>
+</article>
+
+<!-- ============================ № 009 ============================ -->
+<article class="recipe" id="r09">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>009</div>
+    <div>
+      <span class="origin">Bali</span>
+      <h2 class="recipe-title">Sate <em>Lilit</em></h2>
+      <p class="recipe-sub">Spiced minced fish, wrapped around a stalk of lemongrass.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4</dd></div>
+      <div><dt>Time</dt><dd>45 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Medium</dd></div>
+      <div><dt>Region</dt><dd>Bali</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        Where Madurese satay is meat threaded onto a skewer, Balinese <span class="ital">sate lilit</span> is the inverse: the satay <em>becomes</em> the skewer. Minced fish (sometimes chicken, sometimes pork on the Hindu island) is bound with a thick yellow spice paste (<span class="ital">base genep</span>) and grated coconut, then moulded around the woody bottom of a lemongrass stalk. Grilled over coconut husks, the lemongrass perfumes the meat from inside.
+      </p>
+      <p>
+        It is served at temple festivals on small bamboo plates with rice and a few sambals — <span class="ital">sambal matah</span> (raw shallot, lemongrass, chilli, lime, coconut oil) being the proper accompaniment.
+      </p>
+      <p class="pull">
+        A skewer of sate lilit is, structurally, an entire Balinese kitchen — paste, coconut, fish, lemongrass — collapsed onto a stick.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">500 g</span><span>firm white fish (mackerel, snapper), minced</span></li>
+        <li><span class="qty">80 g</span><span>freshly grated coconut</span></li>
+        <li><span class="qty">12</span><span>lemongrass stalks, root ends trimmed</span></li>
+        <li><span class="qty">for paste</span><span>6 shallots, 4 garlic, 5 red chillies, 2 candlenuts, 1 tsp turmeric, 1 thumb ginger, 1 thumb galangal, 1 tsp coriander seed, 1 tsp shrimp paste</span></li>
+        <li><span class="qty">2</span><span>kaffir lime leaves, very finely sliced</span></li>
+        <li><span class="qty">1</span><span>egg white</span></li>
+        <li><span class="qty">1 Tbsp</span><span>palm sugar, salt</span></li>
+        <li><span class="qty">for sambal matah</span><span>5 shallots, 1 lemongrass (tender white part), 4 chillies, 2 kaffir lime leaves, 1 lime, 3 Tbsp coconut oil, salt</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Pound or blitz the paste ingredients to a smooth purée. Fry in 3 Tbsp coconut oil over medium-low heat until oil splits and paste darkens, 8 minutes. Cool completely.</li>
+        <li>In a bowl, combine minced fish, cooled paste, grated coconut, sliced lime leaves, egg white, palm sugar and salt. Knead with your hand until tacky — about 2 minutes.</li>
+        <li>Bash the woody bottom 3 cm of each lemongrass stalk with the back of a knife to open the fibres.</li>
+        <li>Mould 2 Tbsp of mixture around the bashed end of each stalk, squeezing until it adheres firmly.</li>
+        <li>Grill over hot coals (or under a fierce broiler), turning, until the fish is opaque and edges are charred — 4 to 5 minutes.</li>
+        <li>For sambal matah: slice shallots, lemongrass, chillies and lime leaves as finely as your knife will allow. Toss with lime, hot coconut oil and salt. Spoon over the satay at the table.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>If lemongrass stalks are not stout enough, use them in pairs, side by side; the moulded fish will hold them together as it cooks.</p>
+  </div>
+</article>
+
+<!-- ============================ № 010 ============================ -->
+<article class="recipe" id="r10">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>010</div>
+    <div>
+      <span class="origin">East Java &nbsp;/&nbsp; Madiun, Kediri</span>
+      <h2 class="recipe-title">Nasi <em>Pecel</em></h2>
+      <p class="recipe-sub">Rice, blanched greens, and a peanut sauce that does the work.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4</dd></div>
+      <div><dt>Time</dt><dd>30 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>East Java</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        <span class="ital">Pecel</span> is the salad of East Java — though calling it salad short-changes the sauce. A platter of blanched water spinach, beansprouts, long beans, cabbage, perhaps the tendril of a young papaya leaf, is heaped beside steamed rice and a few crisp <span class="ital">rempeyek</span> — peanut-studded rice crackers. Over the lot goes a thick, tan-coloured peanut sauce, spiked with kaffir lime leaf and tamarind. It is breakfast in Madiun, lunch in Kediri, and a virtuous late dinner anywhere.
+      </p>
+      <p>
+        The trick is to <em>not</em> dress the vegetables in the kitchen. Serve everything separate; let each eater pour their own sauce, in whatever quantity the day requires.
+      </p>
+      <p class="pull">
+        A pecel is what an Italian crudité would be if it had grown up eating chilli.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">a bunch</span><span>water spinach (kangkung) or spinach</span></li>
+        <li><span class="qty">150 g</span><span>beansprouts</span></li>
+        <li><span class="qty">100 g</span><span>long beans, in 4 cm lengths</span></li>
+        <li><span class="qty">¼</span><span>small cabbage, shredded</span></li>
+        <li><span class="qty">for sauce</span><span>200 g roasted peanuts, 4 red chillies, 3 garlic cloves, 4 kaffir lime leaves, 50 g palm sugar, 1 Tbsp tamarind paste, 1 tsp salt</span></li>
+        <li><span class="qty">to serve</span><span>steamed rice, rempeyek crackers, fried tempeh, lime wedges</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Blanch each vegetable separately in salted boiling water for 30 seconds; lift out into iced water. This preserves their colour and individual crunch.</li>
+        <li>Toast the chillies and garlic over a dry pan until blackened in spots. Cool.</li>
+        <li>In a mortar (or food processor), pound peanuts to a coarse meal. Add chillies, garlic, kaffir lime leaves and palm sugar — pound to a thick paste.</li>
+        <li>Loosen with hot water, a few tablespoons at a time, until the sauce is the consistency of pourable peanut butter. Stir in tamarind and salt.</li>
+        <li>To plate: a mound of rice; the vegetables arranged like petals around it; rempeyek and tempeh on the side. Dress with peanut sauce at the table.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>The sauce will keep for two weeks in the fridge and improves overnight. Always reheat with a splash of hot water — never reheat dry.</p>
+  </div>
+</article>
+
+<!-- ============================ № 011 ============================ -->
+<article class="recipe" id="r11">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>011</div>
+    <div>
+      <span class="origin">Jakarta</span>
+      <h2 class="recipe-title"><em>Ketoprak</em></h2>
+      <p class="recipe-sub">A cart, a knife, a rolling stone, peanut sauce.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>2</dd></div>
+      <div><dt>Time</dt><dd>30 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Jakarta</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        A <span class="ital">ketoprak</span> seller works on the lid of his cart as if it were a kitchen counter. Onto a banana-leaf-lined plate go cubes of pressed rice (<span class="ital">lontong</span>), rice vermicelli, blanched beansprouts and slices of pan-fried tofu. He pounds peanuts, garlic and chilli in a wooden mortar held in his lap, slacks the sauce with kecap manis and a splash of tamarind, then pours it over the plate. He shatters a few prawn crackers on top with the heel of his palm. The whole transaction takes ninety seconds.
+      </p>
+      <p>
+        Where <span class="ital">gado-gado</span> uses many vegetables, ketoprak is austere — its identity is rice noodles + tofu + beansprouts + a punchy peanut-garlic sauce. The word "ketoprak" itself, locals will tell you, is onomatopoeic: the rhythm of the seller's knife and pestle as he assembles.
+      </p>
+      <p class="pull">
+        The cart announces itself. <span class="sc">Ke—to—prak.</span>
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">200 g</span><span>rice vermicelli, soaked until soft</span></li>
+        <li><span class="qty">300 g</span><span>lontong or rice cake, in 2 cm cubes</span></li>
+        <li><span class="qty">200 g</span><span>firm tofu, cubed and pan-fried until golden</span></li>
+        <li><span class="qty">200 g</span><span>beansprouts, blanched briefly</span></li>
+        <li><span class="qty">for sauce</span><span>120 g roasted peanuts, 3 cloves raw garlic, 2 bird's-eye chillies, 1 Tbsp palm sugar, 3 Tbsp kecap manis, 1 Tbsp tamarind water, salt</span></li>
+        <li><span class="qty">to serve</span><span>prawn crackers, fried shallots, sliced scallion, lime</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>In a mortar, pound peanuts with the raw garlic, chillies, palm sugar and a pinch of salt. The raw garlic is essential — do not substitute.</li>
+        <li>Loosen with kecap manis, tamarind, and 4–6 Tbsp hot water until you have a thick, spoonable sauce.</li>
+        <li>Arrange vermicelli, rice cubes, fried tofu and beansprouts in a wide bowl.</li>
+        <li>Pour the sauce generously over the top. Garnish with shattered prawn crackers, fried shallots, scallion and a wedge of lime.</li>
+        <li>Toss at the table just before eating, so the textures stay distinct.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>Ketoprak lives or dies by its garlic. Use it raw, use it bold — a half-clove will give you a polite sauce; the polite sauce is the wrong sauce.</p>
+  </div>
+</article>
+
+<!-- ============================ № 012 ============================ -->
+<article class="recipe" id="r12">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>012</div>
+    <div>
+      <span class="origin">East Java &nbsp;/&nbsp; Surabaya</span>
+      <h2 class="recipe-title">Tahu <em>Telur</em></h2>
+      <p class="recipe-sub">A tofu omelette deep-fried, smashed, drowned in peanut soy.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>2</dd></div>
+      <div><dt>Time</dt><dd>25 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Surabaya</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        <span class="ital">Tahu telur</span> begins with a violence and ends in a sauce. Cubed firm tofu and beaten egg are dropped together into a small pan of very hot oil; they bind into a single golden disc, laced and ragged at the edges. The cook fishes the disc out, breaks it crudely into pieces with the back of his spatula, lays the pieces over rice vermicelli and beansprouts, then pours over a thick brown sauce of peanut, kecap manis, garlic and chilli.
+      </p>
+      <p>
+        It is the comfort food of Surabaya — fast, cheap, deeply savoury, with the textural delight of crisp ragged edges sopping up a sweet, salty, slightly bitter sauce.
+      </p>
+      <p class="pull">
+        An omelette that has been broken on purpose is a kind of honesty about how omelettes get eaten anyway.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">300 g</span><span>firm tofu, in 1.5 cm cubes</span></li>
+        <li><span class="qty">4</span><span>eggs, beaten</span></li>
+        <li><span class="qty">2 stalks</span><span>scallion, sliced</span></li>
+        <li><span class="qty">½ tsp</span><span>salt, pinch of pepper</span></li>
+        <li><span class="qty">for serving</span><span>rice vermicelli, beansprouts, prawn crackers, fried shallots, sliced lettuce</span></li>
+        <li><span class="qty">for sauce</span><span>100 g roasted peanuts, 3 cloves garlic, 2 chillies, 4 Tbsp kecap manis, 1 Tbsp palm sugar, 1 tsp tamarind, 100 ml hot water</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Pound or blitz the sauce ingredients to a thick brown sauce, the consistency of pancake syrup. Set aside.</li>
+        <li>Toss the tofu cubes with the beaten egg, scallion, salt and pepper. The egg should coat each cube generously.</li>
+        <li>Heat 2 cm of oil in a small wok or saucepan to 180 °C.</li>
+        <li>Pour the tofu-egg mixture in all at once. It will puff and brown at the edges. Do not stir.</li>
+        <li>After 90 seconds, flip the disc — use a wide slotted spoon — and fry the other side, 60 seconds more.</li>
+        <li>Lift onto paper. Break crudely into 4–6 pieces.</li>
+        <li>To plate: a base of vermicelli, beansprouts, lettuce. Lay the broken omelette pieces over. Pour the sauce until it pools at the edges. Crown with fried shallots and prawn crackers.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>The oil must be very hot, or the egg will be flat and greasy. Drop a single bead of batter in first — it should sizzle and bob immediately.</p>
+  </div>
+</article>
+
+<!-- ============================ № 013 ============================ -->
+<article class="recipe" id="r13">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>013</div>
+    <div>
+      <span class="origin">West Java &nbsp;/&nbsp; Sundanese</span>
+      <h2 class="recipe-title"><em>Cilok</em></h2>
+      <p class="recipe-sub">Tapioca balls, poked with a stick, sauced with peanut.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>4 as snack</dd></div>
+      <div><dt>Time</dt><dd>30 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Sunda</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        The name <span class="ital">cilok</span> contracts the Sundanese phrase <span class="ital">aci dicolok</span> — "starch that has been poked." That is, more or less, the entire dish: tapioca starch dumplings, kneaded with garlic and pepper, steamed or boiled until they bounce, threaded onto a bamboo stick, then dragged through a peanut sauce, with a slick of kecap manis and a sweet chilli sauce for emphasis.
+      </p>
+      <p>
+        It is West Java's after-school snack, sold by men on bicycles with a small steamer in the basket. It costs almost nothing, takes seconds to assemble, and disappears in about the same length of time.
+      </p>
+      <p class="pull">
+        Cilok asks one question of its dough: bounce, or no bounce? Wrong answer and the children will go elsewhere tomorrow.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">200 g</span><span>tapioca starch</span></li>
+        <li><span class="qty">80 g</span><span>plain flour</span></li>
+        <li><span class="qty">300 ml</span><span>boiling water</span></li>
+        <li><span class="qty">4 cloves</span><span>garlic, finely grated</span></li>
+        <li><span class="qty">1 tsp</span><span>salt, ½ tsp white pepper, ½ tsp bouillon</span></li>
+        <li><span class="qty">2 stalks</span><span>scallion, very finely sliced</span></li>
+        <li><span class="qty">for sauce</span><span>120 g roasted peanuts, 2 garlic, 2 chillies, 3 Tbsp kecap manis, 1 Tbsp palm sugar, 200 ml hot water</span></li>
+        <li><span class="qty">to serve</span><span>kecap manis, sambal, bamboo skewers</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>In a wide bowl, whisk plain flour with garlic, salt, pepper, bouillon and scallion. Pour over boiling water, stirring until you have a thick paste.</li>
+        <li>Add tapioca starch in two stages, kneading first with a spoon then with a (lightly oiled) hand, until you have a smooth, slightly tacky dough.</li>
+        <li>Shape into balls the size of small walnuts. Oil your palms if the dough sticks.</li>
+        <li>Bring a wide pot of water to a gentle boil. Drop the cilok in. They will sink, then rise. Cook 4 minutes after they rise. Lift out.</li>
+        <li>For the sauce: pound peanuts, garlic and chillies to a paste. Loosen with kecap manis, palm sugar and hot water in a small pan; simmer 5 minutes.</li>
+        <li>Thread 4–5 cilok onto each skewer. Spoon peanut sauce generously over. Drizzle extra kecap manis. Eat warm.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>The dough must be hot when you knead it — cold tapioca becomes powdery, hot tapioca becomes elastic. This is the entire physics of cilok.</p>
+  </div>
+</article>
+
+<!-- ============================ № 014 ============================ -->
+<article class="recipe" id="r14">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>014</div>
+    <div>
+      <span class="origin">West Sumatra &nbsp;/&nbsp; Minangkabau</span>
+      <h2 class="recipe-title"><em>Rendang</em></h2>
+      <p class="recipe-sub">The long, dark cook — beef, coconut, and four hours of patience.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>6</dd></div>
+      <div><dt>Time</dt><dd>3 h 30 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Project</dd></div>
+      <div><dt>Region</dt><dd>Minangkabau</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        <span class="ital">Rendang</span> is what coconut milk becomes when no one in the kitchen is in a hurry. Chunks of beef are dropped into a wide pan of coconut milk that has been pounded with a great spice paste — shallots, garlic, chillies, lemongrass, galangal, ginger, turmeric, candlenut, kaffir lime leaf, salam, turmeric leaf. The pan simmers. Hours pass.
+      </p>
+      <p>
+        The coconut milk first reduces to a curry (<span class="ital">gulai</span>); then, as more water evaporates and the oils begin to split, to a darker, drier braise (<span class="ital">kalio</span>); and then, with continued stirring and patience, to the deep, almost-black, oil-glazed final state called <span class="ital">rendang</span>. The beef has not been frying — it has been slow-toasting in its own caramelised coconut. It will keep for weeks.
+      </p>
+      <p class="pull">
+        Rendang is a sauce that has eaten itself, leaving only its essence behind.
+        <cite>— A Padang grandmother, anywhere in West Sumatra</cite>
+      </p>
+      <p>
+        Do not rush. A pressure cooker will give you a beef stew. The hours are not negotiable; they are the recipe.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">1.2 kg</span><span>beef chuck or shin, in 4 cm cubes</span></li>
+        <li><span class="qty">1.5 L</span><span>thick coconut milk (or 800 ml + 700 ml water)</span></li>
+        <li><span class="qty">2</span><span>kaffir lime leaves, 4 salam leaves</span></li>
+        <li><span class="qty">2</span><span>turmeric leaves, knotted (if available)</span></li>
+        <li><span class="qty">2 stalks</span><span>lemongrass, bruised</span></li>
+        <li><span class="qty">for the paste</span><span>15 shallots, 8 cloves garlic, 15 red long chillies (deseeded for less heat), 6 bird's-eye chillies, 1 thumb ginger, 2 thumbs galangal, 1 thumb fresh turmeric, 5 candlenuts, 1 Tbsp coriander seed, 1 tsp shrimp paste</span></li>
+        <li><span class="qty">to taste</span><span>palm sugar, salt, tamarind water</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Pound or blend all paste ingredients to a smooth purée.</li>
+        <li>In a wide, heavy pan, combine the paste with coconut milk and aromatics (lemongrass, kaffir lime, salam, turmeric leaf). Bring to a gentle simmer, stirring.</li>
+        <li>Add the beef. Simmer uncovered, stirring every 10 minutes. After about 60 minutes the sauce will thicken into a yellow gravy — this is the <span class="ital">gulai</span> stage. You could eat it here. Do not.</li>
+        <li>Continue cooking. After 90 minutes more, the sauce will have darkened to a thick caramel-brown coating each piece of beef — this is <span class="ital">kalio</span>. You could eat it here. Some do.</li>
+        <li>Continue cooking, stirring more frequently now to prevent catching. The oil will release and the mass will turn almost black. About 60 minutes more.</li>
+        <li>At the very end — when only a few tablespoons of dark oil remain — season with palm sugar, salt and a small splash of tamarind. Stir, taste, adjust.</li>
+        <li>Lift onto a plate. Serve with rice, two days from now, when the flavour has deepened further.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>Use a heavy pan with a wide surface area — evaporation is the engine of rendang. A narrow stockpot will keep the sauce wet, and you will only ever reach <span class="ital">kalio</span>.</p>
+  </div>
+</article>
+
+<!-- ============================ № 015 ============================ -->
+<article class="recipe" id="r15">
+  <header class="recipe-head reveal">
+    <div class="recipe-num"><span class="hash">№</span>015</div>
+    <div>
+      <span class="origin">West Java &nbsp;/&nbsp; Bandung</span>
+      <h2 class="recipe-title"><em>Seblak</em></h2>
+      <p class="recipe-sub">After-school chaos — rehydrated crackers in a hot, aromatic mess.</p>
+    </div>
+    <dl class="recipe-meta">
+      <div><dt>Serves</dt><dd>2</dd></div>
+      <div><dt>Time</dt><dd>25 min</dd></div>
+      <div><dt>Difficulty</dt><dd>Easy</dd></div>
+      <div><dt>Region</dt><dd>Bandung</dd></div>
+    </dl>
+  </header>
+
+  <div class="recipe-body">
+    <div class="story reveal">
+      <p>
+        <span class="ital">Seblak</span> is what happens when you take dried prawn crackers — the puffy, brittle ones you'd eat alongside satay — and refuse to let them be crisp. You boil them. You shock them with chilli, garlic and <span class="ital">kencur</span> (an aromatic ginger relative whose scent is sharp, almost camphor-bright). You crack in an egg. You throw in whatever else is around: macaroni, instant noodles, meatballs, fishcake, sausage, chicken feet if the day calls for them. The crackers go translucent and chewy. The whole thing arrives in a wide bowl looking like a controlled accident.
+      </p>
+      <p>
+        It is a millennial dish, born in Bandung in the 2000s, sold by university canteens and TikTok stalls. There is no canonical version. The constant is kencur — without it, you have a noodle soup; with it, you have seblak.
+      </p>
+      <p class="pull">
+        Seblak smells, properly made, like a kitchen mid-argument.
+      </p>
+    </div>
+
+    <aside class="recipe-side reveal">
+      <h3>Ingredients <em>—&nbsp;bahan</em></h3>
+      <ul>
+        <li><span class="qty">100 g</span><span>uncooked prawn crackers (<span class="ital">kerupuk</span>)</span></li>
+        <li><span class="qty">80 g</span><span>macaroni or instant noodles</span></li>
+        <li><span class="qty">2</span><span>eggs</span></li>
+        <li><span class="qty">100 g</span><span>fishcake, sliced meatballs, sausage — any or all</span></li>
+        <li><span class="qty">4–6</span><span>bird's-eye chillies, to taste</span></li>
+        <li><span class="qty">4 cloves</span><span>garlic</span></li>
+        <li><span class="qty">3</span><span>candlenuts</span></li>
+        <li><span class="qty">1 thumb</span><span>kencur (essential) — or 1 tsp ground kencur</span></li>
+        <li><span class="qty">2 stalks</span><span>scallion, sliced</span></li>
+        <li><span class="qty">1 Tbsp</span><span>kecap manis, salt, bouillon, splash of fish sauce</span></li>
+        <li><span class="qty">to serve</span><span>fried shallots, sliced lime, more chilli</span></li>
+      </ul>
+
+      <h3>Method <em>—&nbsp;cara</em></h3>
+      <ol>
+        <li>Soak the prawn crackers in hot water for 10 minutes until they soften and bend without breaking. Drain.</li>
+        <li>Boil the macaroni separately to al dente; drain.</li>
+        <li>Pound chillies, garlic, candlenuts and kencur to a fragrant paste — kencur should dominate the smell.</li>
+        <li>Heat 2 Tbsp oil in a wok over high heat. Fry the paste until oil splits and it smells almost too strong, 2 minutes.</li>
+        <li>Crack in the eggs and scramble loosely into the paste.</li>
+        <li>Add the fishcake, meatballs, sausage. Toss 30 seconds.</li>
+        <li>Add the softened crackers and macaroni with 300 ml water. Simmer 3 minutes — the crackers will turn translucent and chewy.</li>
+        <li>Season with kecap manis, salt, bouillon, fish sauce. Toss in scallion. Plate, top with fried shallots, lime and extra chilli for those who don't know what they're in for.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <div class="note">
+    <span class="label">Chef's note</span>
+    <p>Kencur is non-negotiable. Substituting ginger or galangal gives you a different (perfectly fine) dish that is not seblak.</p>
+  </div>
+</article>
+
+<div class="aster" aria-hidden="true" style="margin-top:0">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></svg>
+</div>
+
+<!-- ===================== COLOPHON ===================== -->
+<footer class="colophon">
+  <div>
+    <h3>About the volume</h3>
+    <p>
+      <span class="ital">Rasa Nusantara</span> is a one-off cookbook journal: fifteen Indonesian recipes set in serif, printed on warm paper, and bound here in a single document. It was set in Fraunces (display) and Newsreader (body), both variable typefaces by Phaedra Charles and Production Type respectively. No part of this volume requires a kitchen larger than the one you already have.
+    </p>
+    <a href="#contents" class="return">Return to index</a>
+  </div>
+  <div>
+    <h3>Glossary</h3>
+    <p><span class="ital">Kecap manis</span> — sweet thickened soy.<br/>
+       <span class="ital">Terasi</span> — fermented shrimp paste.<br/>
+       <span class="ital">Sambal</span> — chilli condiment, family of.<br/>
+       <span class="ital">Lontong / ketupat</span> — pressed rice cakes.<br/>
+       <span class="ital">Kerupuk</span> — fried crackers, prawn or otherwise.<br/>
+       <span class="ital">Kencur</span> — aromatic ginger, sharp &amp; cool.</p>
+  </div>
+  <div>
+    <p class="signoff">
+      Selamat<br/>makan.
+      <small>— good eating, in nine languages, but always this one first.</small>
+    </p>
+  </div>
+</footer>
+
+<!-- ===================== STICKY CORNER ===================== -->
+<div class="corner hidden" id="corner" aria-hidden="true">
+  <span class="dot"></span>
+  <span>plate</span>
+  <b id="cornerNum">001</b>
+  <span>of 015</span>
+</div>
+
+<script>
+  // progress bar
+  const meter = document.querySelector('.progress span');
+  const corner = document.getElementById('corner');
+  const cornerNum = document.getElementById('cornerNum');
+  const recipes = document.querySelectorAll('.recipe');
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+
+  function onScroll() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = Math.max(0, Math.min(1, h.scrollTop / max));
+    meter.style.width = (p * 100).toFixed(2) + '%';
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // current recipe — corner indicator
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        const n = parseInt(id.replace('r', ''), 10);
+        if (!isNaN(n)) {
+          cornerNum.textContent = pad(n);
+          corner.classList.remove('hidden');
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -50% 0px' });
+  recipes.forEach(r => obs.observe(r));
+
+  // hide corner when above first recipe or in footer
+  const firstObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.target.classList.contains('hero') && e.isIntersecting) corner.classList.add('hidden');
+      if (e.target.tagName === 'FOOTER' && e.isIntersecting) corner.classList.add('hidden');
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.hero, footer.colophon').forEach(el => firstObs.observe(el));
+
+  // staggered reveal-on-scroll
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 60) + 'ms';
+        e.target.classList.add('in');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+
+</body>
+</html>
