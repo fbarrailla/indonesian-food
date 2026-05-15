@@ -763,6 +763,77 @@
     letter-spacing: 0.02em;
   }
 
+  /* -------------------------------------------------------- ratings */
+  .rating {
+    margin-top: clamp(1.25rem, 2vw, 1.75rem);
+    padding-top: var(--sp-3);
+    border-top: 1px dotted var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2em;
+    align-items: center;
+  }
+  @media (max-width: 36rem) { .rating { grid-template-columns: 1fr; gap: 0.6em; } }
+  .rating-label {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30, "wght" 500;
+    font-variant: all-small-caps;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    font-size: var(--fs-xs);
+    white-space: nowrap;
+  }
+  .rating-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.95em;
+    flex-wrap: wrap;
+  }
+  .rating-stars {
+    display: inline-flex;
+    gap: 0.08em;
+  }
+  .rating-stars button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 0 0.05em;
+    font: inherit;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 30, "wght" 420;
+    font-size: 1.45em;
+    line-height: 1;
+    color: var(--rule);
+    cursor: pointer;
+    transition: color 180ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 180ms;
+  }
+  .rating-stars button.on { color: var(--sambal); }
+  .rating-stars button:focus-visible {
+    outline: 1px solid var(--sambal);
+    outline-offset: 3px;
+  }
+  .rating-stars[data-voted="true"] button { cursor: default; }
+  .rating-stars button:not(:disabled):hover { transform: translateY(-1px); }
+  .rating-summary {
+    font-style: italic;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 60, "wght" 380;
+    color: var(--ink-mute);
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+  }
+  .rating-summary b {
+    font-style: normal;
+    color: var(--sambal);
+    font-variation-settings: "opsz" 24, "SOFT" 0, "wght" 500;
+    font-variant-numeric: oldstyle-nums;
+    font-weight: 500;
+  }
+  .rating-summary em {
+    color: var(--clove);
+    font-style: italic;
+  }
+
   /* credits in colophon */
   .credits {
     margin: 0;
@@ -2057,6 +2128,138 @@
     });
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+
+<script type="module">
+  // ============================================================== //
+  //  Reader ratings — Supabase                                     //
+  // ============================================================== //
+
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.4';
+
+  const SUPABASE_URL  = 'https://wltoejicaqvwnmrengsi.supabase.co';
+  const SUPABASE_KEY  = 'sb_publishable_U8lxi0mvRyqlPLPgJ5BmxQ_Frp3xAcf';
+  const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const VOTE_KEY = 'rasa-votes-v1';
+  const readVotes  = () => { try { return JSON.parse(localStorage.getItem(VOTE_KEY) || '{}'); } catch { return {}; } };
+  const writeVote  = (id, rating) => {
+    const v = readVotes(); v[id] = rating;
+    localStorage.setItem(VOTE_KEY, JSON.stringify(v));
+  };
+
+  // Inject a rating block at the bottom of every recipe spread.
+  function buildBlock(rid) {
+    const wrap = document.createElement('div');
+    wrap.className = 'rating';
+    wrap.dataset.recipe = rid;
+    wrap.innerHTML = `
+      <span class="rating-label">Reader rating</span>
+      <div class="rating-row">
+        <div class="rating-stars" role="radiogroup" aria-label="Rate this recipe from 1 to 5 stars">
+          ${[1,2,3,4,5].map(i => `<button type="button" role="radio" aria-checked="false" data-val="${i}" aria-label="${i} star${i>1?'s':''}">&#9733;</button>`).join('')}
+        </div>
+        <span class="rating-summary">No votes yet &mdash; be the first.</span>
+      </div>
+    `;
+    return wrap;
+  }
+
+  function paintStars(starsEl, n) {
+    starsEl.querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', i < n));
+  }
+
+  function setSummary(ratingEl, summary) {
+    const s = ratingEl.querySelector('.rating-summary');
+    const rid = ratingEl.dataset.recipe;
+    const myVote = readVotes()[rid];
+    if (!summary || !summary.votes) {
+      s.innerHTML = myVote
+        ? `Your rating, <em>${myVote}/5</em>. Awaiting other readers.`
+        : 'No votes yet &mdash; be the first.';
+      return;
+    }
+    const avg   = Number(summary.average).toFixed(1);
+    const votes = Number(summary.votes);
+    const mine  = myVote ? ` &mdash; your rating, <em>${myVote}/5</em>.` : '';
+    s.innerHTML = `Average <b>${avg}</b> from <b>${votes}</b> vote${votes>1?'s':''}${mine}`;
+  }
+
+  function lockStars(starsEl) {
+    starsEl.dataset.voted = 'true';
+    starsEl.querySelectorAll('button').forEach(b => b.setAttribute('aria-checked', 'true'));
+  }
+
+  async function fetchAggregates() {
+    const { data, error } = await supa.rpc('get_recipe_rating_summary');
+    if (error) { console.warn('[ratings] aggregate fetch failed', error.message); return {}; }
+    return Object.fromEntries((data || []).map(r => [r.recipe_id, r]));
+  }
+
+  function paintAll(map) {
+    const votes = readVotes();
+    document.querySelectorAll('.rating').forEach(el => {
+      const rid = el.dataset.recipe;
+      setSummary(el, map[rid]);
+      const myVote = votes[rid];
+      if (myVote) {
+        const stars = el.querySelector('.rating-stars');
+        paintStars(stars, myVote);
+        lockStars(stars);
+      }
+    });
+  }
+
+  async function submit(rid, val, block) {
+    const stars = block.querySelector('.rating-stars');
+    lockStars(stars);  // optimistic
+    writeVote(rid, val);
+    paintStars(stars, val);
+    block.querySelector('.rating-summary').innerHTML = `Saving your rating &mdash; <em>${val}/5</em>&hellip;`;
+    const { error } = await supa.from('recipe_ratings').insert({ recipe_id: rid, rating: val });
+    if (error) {
+      console.warn('[ratings] insert failed', error.message);
+      block.querySelector('.rating-summary').innerHTML =
+        `Couldn't save your rating &mdash; <em>${error.message}</em>`;
+      // unlock so they can retry
+      delete stars.dataset.voted;
+      const votes = readVotes(); delete votes[rid];
+      localStorage.setItem(VOTE_KEY, JSON.stringify(votes));
+      return;
+    }
+    const map = await fetchAggregates();
+    paintAll(map);
+  }
+
+  // Wire up every recipe spread.
+  document.querySelectorAll('.recipe').forEach(article => {
+    const rid = article.id;
+    const block = buildBlock(rid);
+    article.appendChild(block);
+
+    const stars = block.querySelector('.rating-stars');
+    const buttons = [...stars.querySelectorAll('button')];
+
+    buttons.forEach((b, i) => {
+      const fill = () => { if (stars.dataset.voted !== 'true') paintStars(stars, i + 1); };
+      b.addEventListener('mouseenter', fill);
+      b.addEventListener('focus', fill);
+      b.addEventListener('click', () => {
+        if (stars.dataset.voted === 'true') return;
+        submit(rid, i + 1, block);
+      });
+    });
+    stars.addEventListener('mouseleave', () => {
+      if (stars.dataset.voted === 'true') {
+        paintStars(stars, readVotes()[rid] || 0);
+      } else {
+        paintStars(stars, 0);
+      }
+    });
+  });
+
+  // Initial paint with whatever the server knows.
+  fetchAggregates().then(paintAll);
 </script>
 
 </body>
