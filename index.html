@@ -834,6 +834,145 @@
     font-style: italic;
   }
 
+  /* -------------------------------------------------------- kitchen notes */
+  .kitchen-notes {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 56rem) {
+    .kitchen-notes { grid-template-columns: 1.25fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); }
+  }
+  .kn-col h3 {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60, "SOFT" 70, "wght" 380;
+    font-style: italic;
+    font-size: var(--fs-md);
+    margin: 0 0 var(--sp-3);
+    color: var(--ink);
+    line-height: 1;
+  }
+  .kn-list { list-style: none; margin: 0; padding: 0; }
+  .kn-empty {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 80, "wght" 380;
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: var(--fs-sm);
+    margin: 0;
+  }
+  .kn-item {
+    padding: 0.75em 0 0.95em;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .kn-item:last-child { border-bottom: 0; }
+  .kn-body {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 50, "wght" 400;
+    font-style: italic;
+    color: var(--ink);
+    font-size: var(--fs-base);
+    line-height: 1.5;
+    margin: 0 0 0.4em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .kn-body::before { content: '\201C'; color: var(--sambal); margin-right: 0.05em; }
+  .kn-body::after  { content: '\201D'; color: var(--sambal); margin-left: 0.05em; }
+  .kn-meta {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30, "wght" 500;
+    font-variant: all-small-caps;
+    letter-spacing: 0.18em;
+    font-size: var(--fs-xs);
+    color: var(--ink-mute);
+    margin: 0;
+  }
+  .kn-meta b {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 30, "wght" 500;
+    color: var(--sambal);
+    font-weight: 500;
+    font-variant: normal;
+    letter-spacing: 0;
+    margin-right: 0.4em;
+  }
+
+  /* form */
+  .kn-form { display: grid; gap: 0.85em; }
+  .kn-form label {
+    display: grid;
+    gap: 0.35em;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30, "wght" 500;
+    font-variant: all-small-caps;
+    letter-spacing: 0.18em;
+    font-size: var(--fs-xs);
+    color: var(--ink-mute);
+  }
+  .kn-form input,
+  .kn-form textarea {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    background: var(--paper);
+    color: var(--ink);
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    padding: 0.55em 0.1em;
+    border-radius: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-variant: normal;
+    letter-spacing: 0;
+  }
+  .kn-form textarea {
+    border: 1px solid var(--rule);
+    padding: 0.7em 0.85em;
+    resize: vertical;
+    line-height: 1.5;
+    min-height: 5em;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 50, "wght" 400;
+    font-style: italic;
+  }
+  .kn-form input:focus,
+  .kn-form textarea:focus {
+    outline: none;
+    border-color: var(--sambal);
+  }
+  .kn-actions {
+    display: flex; gap: 1em; align-items: baseline; flex-wrap: wrap;
+  }
+  .kn-form button {
+    justify-self: start;
+    appearance: none;
+    background: var(--ink);
+    color: var(--paper);
+    border: 0;
+    padding: 0.8em 1.5em;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 14, "SOFT" 30, "wght" 500;
+    font-variant: all-small-caps;
+    letter-spacing: 0.22em;
+    font-size: var(--fs-xs);
+    cursor: pointer;
+    transition: background 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .kn-form button:hover { background: var(--sambal); }
+  .kn-form button:disabled { opacity: 0.45; cursor: wait; }
+  .kn-feedback {
+    margin: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 24, "SOFT" 80, "wght" 380;
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: var(--fs-xs);
+  }
+  .kn-feedback.error { color: var(--sambal); }
+
   /* credits in colophon */
   .credits {
     margin: 0;
@@ -2260,6 +2399,140 @@
 
   // Initial paint with whatever the server knows.
   fetchAggregates().then(paintAll);
+
+
+  // ============================================================== //
+  //  Notes from the kitchen — comments                             //
+  // ============================================================== //
+
+  function fmtDate(iso) {
+    const d = new Date(iso);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function buildNotesBlock(rid) {
+    const sec = document.createElement('section');
+    sec.className = 'kitchen-notes';
+    sec.dataset.recipe = rid;
+    sec.innerHTML = `
+      <div class="kn-col">
+        <h3>Notes from the kitchen</h3>
+        <ol class="kn-list" aria-live="polite"></ol>
+        <p class="kn-empty">Nothing pinned yet &mdash; be the first.</p>
+      </div>
+      <div class="kn-col">
+        <h3>Pin a note</h3>
+        <form class="kn-form" novalidate>
+          <label>
+            <span>Your name</span>
+            <input type="text" name="author" maxlength="60" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Your note</span>
+            <textarea name="body" maxlength="800" rows="4" placeholder="Cooked it, loved it, ruined it&hellip; tell us." required></textarea>
+          </label>
+          <div class="kn-actions">
+            <button type="submit">Pin it</button>
+            <p class="kn-feedback" role="status"></p>
+          </div>
+        </form>
+      </div>
+    `;
+    return sec;
+  }
+
+  function buildCommentItem(c) {
+    const li = document.createElement('li');
+    li.className = 'kn-item';
+    const body = document.createElement('p');
+    body.className = 'kn-body';
+    body.textContent = c.body;
+    const meta = document.createElement('p');
+    meta.className = 'kn-meta';
+    const author = document.createElement('b');
+    author.textContent = c.author;
+    const date = document.createElement('span');
+    date.textContent = fmtDate(c.created_at);
+    meta.appendChild(author);
+    meta.appendChild(date);
+    li.appendChild(body);
+    li.appendChild(meta);
+    return li;
+  }
+
+  async function fetchAllComments() {
+    const { data, error } = await supa.from('recipe_comments')
+      .select('id, recipe_id, author, body, created_at')
+      .order('created_at', { ascending: false })
+      .limit(500);
+    if (error) { console.warn('[comments] fetch failed', error.message); return {}; }
+    const grouped = {};
+    for (const c of (data || [])) { (grouped[c.recipe_id] ||= []).push(c); }
+    return grouped;
+  }
+
+  function paintComments(grouped) {
+    document.querySelectorAll('.kitchen-notes').forEach(sec => {
+      const rid = sec.dataset.recipe;
+      const list = sec.querySelector('.kn-list');
+      const empty = sec.querySelector('.kn-empty');
+      list.innerHTML = '';
+      const items = grouped[rid] || [];
+      if (!items.length) {
+        empty.hidden = false;
+      } else {
+        empty.hidden = true;
+        items.forEach(c => list.appendChild(buildCommentItem(c)));
+      }
+    });
+  }
+
+  // Wire one form per recipe
+  document.querySelectorAll('.recipe').forEach(article => {
+    const rid = article.id;
+    const sec = buildNotesBlock(rid);
+    article.appendChild(sec);
+
+    const form = sec.querySelector('.kn-form');
+    const fb = sec.querySelector('.kn-feedback');
+    const btn = form.querySelector('button');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      fb.classList.remove('error');
+      const fd = new FormData(form);
+      const author = (fd.get('author') || '').toString().trim();
+      const body   = (fd.get('body') || '').toString().trim();
+      if (!author || !body) {
+        fb.classList.add('error');
+        fb.textContent = 'A name and a note are both required.';
+        return;
+      }
+      btn.disabled = true;
+      const original = btn.textContent;
+      btn.textContent = 'Pinning…';
+      fb.textContent = '';
+      const { error } = await supa.from('recipe_comments').insert({ recipe_id: rid, author, body });
+      btn.disabled = false;
+      btn.textContent = original;
+      if (error) {
+        fb.classList.add('error');
+        fb.textContent = error.message;
+        console.warn('[comments] insert failed', error);
+        return;
+      }
+      fb.textContent = 'Pinned. Thank you.';
+      form.querySelector('[name="body"]').value = '';
+      // refetch everything for this recipe
+      const map = await fetchAllComments();
+      paintComments(map);
+      setTimeout(() => { fb.textContent = ''; }, 4000);
+    });
+  });
+
+  // Initial paint of comments
+  fetchAllComments().then(paintComments);
 </script>
 
 </body>

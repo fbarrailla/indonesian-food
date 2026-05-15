@@ -45,3 +45,42 @@ as $$
 $$;
 
 grant execute on function public.get_recipe_rating_summary() to anon, authenticated;
+
+
+-- ============================================================ --
+--  Reader comments — "Notes from the kitchen"
+-- ============================================================ --
+
+create table if not exists public.recipe_comments (
+  id          bigserial primary key,
+  recipe_id   text       not null,
+  author      text       not null,
+  body        text       not null,
+  created_at  timestamptz not null default now(),
+  constraint recipe_comments_author_len check (char_length(trim(author)) between 1 and 60),
+  constraint recipe_comments_body_len   check (char_length(trim(body))   between 1 and 800)
+);
+
+create index if not exists recipe_comments_recipe_idx
+  on public.recipe_comments (recipe_id, created_at desc);
+
+alter table public.recipe_comments enable row level security;
+
+-- Anyone can post a note (length already CHECK'ed)
+drop policy if exists "comments_insert_anyone" on public.recipe_comments;
+create policy "comments_insert_anyone"
+  on public.recipe_comments
+  for insert
+  to anon, authenticated
+  with check (
+        char_length(trim(author)) between 1 and 60
+    and char_length(trim(body))   between 1 and 800
+  );
+
+-- Anyone can read
+drop policy if exists "comments_select_anyone" on public.recipe_comments;
+create policy "comments_select_anyone"
+  on public.recipe_comments
+  for select
+  to anon, authenticated
+  using (true);
